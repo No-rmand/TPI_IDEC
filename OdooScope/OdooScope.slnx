@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="OdooScopeEntities/OdooScopeEntities.csproj" />
+  <Project Path="OdooScopeWeb/OdooScopeWeb.csproj" />
+</Solution>
