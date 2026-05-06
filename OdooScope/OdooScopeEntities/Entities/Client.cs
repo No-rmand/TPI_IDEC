@@ -15,6 +15,8 @@ public partial class Client
 
     public int SecteurActiviteId { get; set; }
 
+    public virtual ICollection<Repondre> Repondres { get; set; } = new List<Repondre>();
+
     public virtual ICollection<Resultat> Resultats { get; set; } = new List<Resultat>();
 
     public virtual SecteurActivite SecteurActivite { get; set; } = null!;

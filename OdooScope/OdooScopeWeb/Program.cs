@@ -1,3 +1,5 @@
+using OdooScopeEntities.Entities;
+
 namespace OdooScopeWeb
 {
     public class Program
@@ -8,7 +10,7 @@ namespace OdooScopeWeb
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-
+            builder.Services.AddDbContextFactory<SqlServerContext>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -27,7 +29,7 @@ namespace OdooScopeWeb
             app.MapStaticAssets();
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}")
+                pattern: "{controller=MainMenu}/{action=Menu}/{id?}")
                 .WithStaticAssets();
 
             app.Run();

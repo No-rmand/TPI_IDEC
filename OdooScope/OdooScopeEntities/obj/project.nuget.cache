@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "IYx+uaqsKIQ=",
+  "dgSpecHash": "xLNfQI8Iy0g=",
   "success": true,
-  "projectFilePath": "C:\\Users\\norma\\Documents\\GitHub\\TPI Idec\\OdooScope\\OdooScopeEntities\\OdooScopeEntities.csproj",
+  "projectFilePath": "C:\\Users\\norma\\Documents\\GitHub\\TPI_IDEC\\OdooScope\\OdooScopeEntities\\OdooScopeEntities.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\norma\\.nuget\\packages\\azure.core\\1.47.1\\azure.core.1.47.1.nupkg.sha512",
     "C:\\Users\\norma\\.nuget\\packages\\azure.identity\\1.14.2\\azure.identity.1.14.2.nupkg.sha512",

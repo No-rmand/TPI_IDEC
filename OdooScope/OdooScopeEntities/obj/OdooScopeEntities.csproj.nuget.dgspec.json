@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\norma\\Documents\\GitHub\\TPI Idec\\OdooScope\\OdooScopeEntities\\OdooScopeEntities.csproj": {}
+    "C:\\Users\\norma\\Documents\\GitHub\\TPI_IDEC\\OdooScope\\OdooScopeEntities\\OdooScopeEntities.csproj": {}
   },
   "projects": {
-    "C:\\Users\\norma\\Documents\\GitHub\\TPI Idec\\OdooScope\\OdooScopeEntities\\OdooScopeEntities.csproj": {
+    "C:\\Users\\norma\\Documents\\GitHub\\TPI_IDEC\\OdooScope\\OdooScopeEntities\\OdooScopeEntities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\norma\\Documents\\GitHub\\TPI Idec\\OdooScope\\OdooScopeEntities\\OdooScopeEntities.csproj",
+        "projectUniqueName": "C:\\Users\\norma\\Documents\\GitHub\\TPI_IDEC\\OdooScope\\OdooScopeEntities\\OdooScopeEntities.csproj",
         "projectName": "OdooScopeEntities",
-        "projectPath": "C:\\Users\\norma\\Documents\\GitHub\\TPI Idec\\OdooScope\\OdooScopeEntities\\OdooScopeEntities.csproj",
+        "projectPath": "C:\\Users\\norma\\Documents\\GitHub\\TPI_IDEC\\OdooScope\\OdooScopeEntities\\OdooScopeEntities.csproj",
         "packagesPath": "C:\\Users\\norma\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\norma\\Documents\\GitHub\\TPI Idec\\OdooScope\\OdooScopeEntities\\obj\\",
+        "outputPath": "C:\\Users\\norma\\Documents\\GitHub\\TPI_IDEC\\OdooScope\\OdooScopeEntities\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
