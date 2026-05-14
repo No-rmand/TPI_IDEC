@@ -1,0 +1,25 @@
+﻿@using OdooScopeEntities.Entities;
+@model List<Question>
+
+<h1>Formulaire Questions</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td scope="col">Ordre</td>
+            <td scope="col">Texte</td>
+            <td scope="col">Parent</td>
+            <td scope="col">SecteurActivite</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Question a in Model)
+        {
+            <tr>
+                <td>@a.Ordre</td>
+                <td>@a.Texte</td>
+                <td>@a.QuestionId</td>
+                <td>@a.SecteurActiviteId</td>
+            </tr>
+        }
+    </tbody>
+</table>

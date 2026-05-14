@@ -11,7 +11,7 @@ public partial class Question
 
     public int Ordre { get; set; }
 
-    public int QuestionId { get; set; }
+    public int? QuestionId { get; set; }
 
     public int? SecteurActiviteId { get; set; }
 

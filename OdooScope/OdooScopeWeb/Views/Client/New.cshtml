@@ -1,0 +1,22 @@
+﻿@using OdooScopeEntities.Entities;
+@model Client
+
+<form asp-controller="Client" asp-action="New" method="post">
+    <label>Nom</label>
+        <input asp-for="Nom" />
+    <br/>
+    <lable>Email</lable>
+        <input asp-for="Email" />
+    <br />
+    <label>NombreEmploye</label>
+        <input asp-for="NombreEmploye" />
+    <br />
+    <label>SecteurActivite</label>
+        <select asp-for="SecteurActivite"/>
+            <option value="Choix">------</option>
+            @foreach (SecteurActivite sa in (List<SecteurActivite>)ViewBag.sa)
+            {
+                <option value="@sa.Id">@sa.Nom</option>
+            }
+    <input type="submit" value="Sauver" class="btn btn-sm btn-dark" />
+</form>

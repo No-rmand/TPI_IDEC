@@ -1,0 +1,38 @@
+﻿@using OdooScopeEntities.Entities;
+@model List<Client>
+
+<h1>Liste des clients</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td scope="col">Id</td>
+            <td scope="col">Nom</td>
+            <td scope="col">Email</td>
+            <td scope="col">NombreEmploye</td>
+            <td scope="col">SecteurActivite</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Client a in Model)
+        {
+            <tr>
+                <td scope="col">@a.Id</td>
+                <td>@a.Nom</td>
+                <td>@a.Email</td>
+                <td>@a.NombreEmploye</td>
+                <td>@a.SecteurActivite.Nom</td>
+                <td>
+                    <a asp-controller="Question" asp-action="New" class="btn btn-sm btn-dark">Client</a>
+                    <a asp-controller="Question" asp-action="New" class="btn btn-sm btn-dark">Question</a>
+                    <a asp-controller="Question" asp-action="New" class="btn btn-sm btn-dark">Resultat</a>
+                    @*
+                        Liaisons à faire vers le bon chemin
+                        pour client et question = formulaire nouveau client remplis avec les infos / questionnaire avec les réponses
+                        Resultat - vue des résultats du client
+                    *@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

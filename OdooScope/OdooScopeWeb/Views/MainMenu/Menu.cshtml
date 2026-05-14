@@ -5,7 +5,14 @@
 }
 
 <h1>OdooScope</h1>
-<a asp-controller="NewClient" asp-action="NewClientForm" class="btn btn-dark">Nouveau Client</a>
-<a asp-controller="ClientList" asp-action="DisplayClientList" class="btn btn-dark">Client Existant</a>
-<a asp-controller="AddSector" asp-action="AddNewSector" class="btn btn-dark">Nouveau Secteur d'Activité</a>
-<a asp-controller="AddQuestion" asp-action="AddNewQuestion" class="btn btn-dark">Nouvelle Question</a>
+<br />
+<a asp-controller="Client" asp-action="New" class="btn btn-dark">Nouveau Client</a>
+<br/>
+<br />
+<a asp-controller="Client" asp-action="List" class="btn btn-dark">Client Existant</a>
+<br />
+<br />
+<a asp-controller="SecteurActivite" asp-action="List" class="btn btn-dark">Secteur d'Activité</a>
+<br />
+<br />
+<a asp-controller="Question" asp-action="List" class="btn btn-dark">Question</a>

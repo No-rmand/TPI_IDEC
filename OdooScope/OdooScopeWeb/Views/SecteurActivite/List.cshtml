@@ -1,0 +1,26 @@
+﻿@using OdooScopeEntities.Entities;
+@model List<SecteurActivite>
+
+<h1>Liste des secteurs d'activités'</h1>
+<a asp-controller="SecteurActivite" asp-action="New" class="btn btn-sm btn-dark">Nouveau</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td scope="col">Id</td>
+            <td scope="col">Nom</td>
+            <td scope="col">Description</td>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (SecteurActivite a in Model)
+        {
+            <tr>
+                <td>@a.Id</td>
+                <td>@a.Nom</td>
+                <td>@a.Description</td>
+
+            </tr>
+        }
+    </tbody>
+</table>
