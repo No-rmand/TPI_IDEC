@@ -15,7 +15,7 @@ namespace OdooScopeWeb.Controllers
         {
             List<Question> list = _context.Questions.OrderBy(q => q.Ordre).ToList();
             return View(list);
-            // j'ai besoin de formation sur JS pour:
+            // YVES j'ai besoin de formation sur JS pour:
             // masquer les QuestionId == null
             // les afficher si réponse = Oui
         }

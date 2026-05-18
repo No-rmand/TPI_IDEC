@@ -14,18 +14,18 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (Client a in Model)
+        @foreach (Client c in Model)
         {
             <tr>
-                <td scope="col">@a.Id</td>
-                <td>@a.Nom</td>
-                <td>@a.Email</td>
-                <td>@a.NombreEmploye</td>
-                <td>@a.SecteurActivite.Nom</td>
+                <td scope="col">@c.Id</td>
+                <td>@c.Nom</td>
+                <td>@c.Email</td>
+                <td>@c.NombreEmploye</td>
+                <td>@c.SecteurActivite.Nom</td>
                 <td>
-                    <a asp-controller="Question" asp-action="New" class="btn btn-sm btn-dark">Client</a>
-                    <a asp-controller="Question" asp-action="New" class="btn btn-sm btn-dark">Question</a>
-                    <a asp-controller="Question" asp-action="New" class="btn btn-sm btn-dark">Resultat</a>
+                    <a asp-controller="Client" asp-action="Update" asp-route-id="@c.Id" class="btn btn-sm btn-dark">Client</a>
+                    <a asp-controller="Question" asp-action="Update" asp-route-id="@c.Id" class="btn btn-sm btn-dark">Question</a>
+                    <a asp-controller="Resultat" asp-action="Result" asp-route-id="@c.Id" class="btn btn-sm btn-dark">Resultat</a>
                     @*
                         Liaisons à faire vers le bon chemin
                         pour client et question = formulaire nouveau client remplis avec les infos / questionnaire avec les réponses

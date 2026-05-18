@@ -6,7 +6,7 @@ using OdooScopeEntities.Entities;
 namespace OdooScopeWeb.Controllers
 {
 
-    
+
     public class ClientController : Controller
     {
 
@@ -40,12 +40,37 @@ namespace OdooScopeWeb.Controllers
             {
                 _context.Clients.Add(c);
                 _context.SaveChanges();
-                return RedirectToAction("Form", "Question", new {notes = notes});
+                return RedirectToAction("Form", "Question", new { notes = notes });
             }
             else
             {
                 ViewBag.sa = _context.SecteurActivites.ToList();
                 return View(c);
+            }
+
+        }
+        [HttpGet]
+        public IActionResult Update(Client c)
+        {
+            Client existClient = _context.Clients.FirstOrDefault(c => c.Id == c.Id);
+            ViewBag.sa = _context.SecteurActivites.ToList();
+            return View(existClient);
+        }
+
+        [HttpPost]
+        public IActionResult UpdateDB(Client c)
+        {
+            ModelState.Remove("SecteurActivite");
+            if (ModelState.IsValid)
+            {
+                _context.Clients.Update(c);
+                _context.SaveChanges();
+                return RedirectToAction("Menu", "MainMenu");
+            }
+            else
+            {
+                ViewBag.sa = _context.SecteurActivites.ToList();
+                return RedirectToAction("Update", "Client");
             }
 
         }
