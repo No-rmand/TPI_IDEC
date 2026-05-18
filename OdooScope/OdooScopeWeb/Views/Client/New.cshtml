@@ -12,11 +12,17 @@
         <input asp-for="NombreEmploye" />
     <br />
     <label>SecteurActivite</label>
-        <select asp-for="SecteurActivite"/>
+        <select asp-for="SecteurActiviteId">
             <option value="Choix">------</option>
             @foreach (SecteurActivite sa in (List<SecteurActivite>)ViewBag.sa)
             {
                 <option value="@sa.Id">@sa.Nom</option>
             }
+        </select>
+    <br />
+    <label>Notes</label>
+    <textarea name="Notes">@ViewBag.Notes</textarea>
+    <br />
+    <br />
     <input type="submit" value="Sauver" class="btn btn-sm btn-dark" />
 </form>

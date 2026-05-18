@@ -29,19 +29,22 @@ namespace OdooScopeWeb.Controllers
         }
 
         [HttpPost]
-        public IActionResult New(Client c)
+        public IActionResult New(Client c, string notes)
         {
             // QUESTION YVES
-            // j'ai un soucis sur ce ModelState. Comment savoir ce qui bloque ?
-            // Il est toujorus false si je remplis les champs
+            // j'ai un soucis sur ce ModelState. bloque à cause de SecteurActivite
+            // Il est toujorus false si je remplis les champs car il prend secteurActiviteID
+            // J'ai obtenu la solution ModelState.Remove de Claude et ça marche comme ça mais pas propre et pas compris
+            ModelState.Remove("SecteurActivite");
             if (ModelState.IsValid)
             {
                 _context.Clients.Add(c);
                 _context.SaveChanges();
-                return RedirectToAction("List");
+                return RedirectToAction("Form", "Question", new {notes = notes});
             }
             else
             {
+                ViewBag.sa = _context.SecteurActivites.ToList();
                 return View(c);
             }
 

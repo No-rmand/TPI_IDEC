@@ -13,7 +13,11 @@ namespace OdooScopeWeb.Controllers
         }
         public IActionResult New()
         {
-            return View();
+            List<Question> list = _context.Questions.OrderBy(q => q.Ordre).ToList();
+            return View(list);
+            // j'ai besoin de formation sur JS pour:
+            // masquer les QuestionId == null
+            // les afficher si réponse = Oui
         }
 
         public IActionResult List()
@@ -27,8 +31,9 @@ namespace OdooScopeWeb.Controllers
 
             // + D'ou vien Question(s) alors que dans ma db la table s'appele bien Question ???
         }
-        public IActionResult Form()
+        public IActionResult Form(string notes)
         {
+            ViewBag.Notes = notes;
             List<Question> liste = _context.Questions.ToList();
             return View(liste);
         }
