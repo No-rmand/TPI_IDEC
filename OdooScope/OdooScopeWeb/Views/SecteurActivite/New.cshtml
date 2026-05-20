@@ -1,5 +1,22 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@using OdooScopeEntities.Entities;
+@model SecteurActivite
+
+<form asp-controller="SecteurActivite" asp-action="New" method="post">
+    <label>Nom</label>
+    <input asp-for="Nom" />
+    <br />
+    <lable>Description</lable>
+    <input asp-for="Description" />
+    <br />
+    <label>Application</label>
+    <select asp-for="ApplicationOdoos">
+        <option value="Choix">------</option>
+        @foreach (ApplicationOdoo ao in (List<ApplicationOdoo>)ViewBag.ao)
+        {
+            <option value="@ao.Id">@ao.Nom</option>
+        }
+    </select>
+    <br />
+    <br />
+    <input type="submit" value="Sauver" class="btn btn-sm btn-dark" />
+</form>

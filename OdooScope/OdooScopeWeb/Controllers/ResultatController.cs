@@ -11,7 +11,7 @@ namespace OdooScopeWeb.Controllers
         {
             _context = context;
         }
-        public IActionResult Result()
+        public IActionResult Result(Client c, string notes)
         {
             List<ApplicationOdoo> list = _context.ApplicationOdoos.ToList();
             return View(list);

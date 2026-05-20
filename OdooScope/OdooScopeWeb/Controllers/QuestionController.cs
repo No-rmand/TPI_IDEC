@@ -25,17 +25,33 @@ namespace OdooScopeWeb.Controllers
             List<Question> liste = _context.Questions.Include(q => q.SecteurActivite).ToList();
             return View(liste);
 
-            // QUESTION YVES
-            // Comment faire pour que la clonne Question Parent affiche non pas l'ID (QuestionId) mais le texte de Question (Question.texte)
-            // J'ai essayé .Include(q => q.Questions.Texte) mais j'ai une erreur de compil sur Questions
-
-            // + D'ou vien Question(s) alors que dans ma db la table s'appele bien Question ???
         }
-        public IActionResult Form(string notes)
+        [HttpPost]
+        public IActionResult Form(int clientId, string notes, List<int> questionIds, List<bool> reponses)
         {
+
+            for (int i = 0; i < questionIds.Count; i++)
+            {
+                Repondre r = new Repondre
+                {
+                    ClientId = clientId,
+                    QuestionId = questionIds[i],
+                    Reponse = reponses[i],
+                };
+                _context.Repondres.Add(r);
+            }
+            _context.SaveChanges();
+
+            return RedirectToAction("Result", "Resultat", new { clientId = clientId, note = notes});
+        }
+
+        [HttpGet]
+        public IActionResult Form(int newClient, string notes)
+        {
+            List<Question> questionnaire = _context.Questions.Include(q => q.SecteurActivite).OrderBy(q => q.Ordre).ToList();
+            ViewBag.NewClient = newClient;
             ViewBag.Notes = notes;
-            List<Question> liste = _context.Questions.ToList();
-            return View(liste);
+            return View(questionnaire);
         }
     }
 }

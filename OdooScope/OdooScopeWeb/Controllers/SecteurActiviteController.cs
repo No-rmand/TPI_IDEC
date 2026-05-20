@@ -12,6 +12,7 @@ namespace OdooScopeWeb.Controllers
         }
         public IActionResult New()
         {
+            ViewBag.ao = _context.ApplicationOdoos.ToList();
             return View();
         }
 

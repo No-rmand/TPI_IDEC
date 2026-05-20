@@ -1,0 +1,23 @@
+﻿@using OdooScopeEntities.Entities;
+@model Resultat
+
+<h1>Resultat</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td scope="col">Nom</td>
+            <td scope="col">Email</td>
+            <td scope="col">NombreEmploye</td>
+            <td scope="col">SecteurActivite</td>
+        </tr>
+    </thead>
+    <tbody>
+            <tr>
+                <td scope="col">@Model.Client.Nom</td>
+                <td scope="col">@Model.Client.Email</td>
+                <td scope="col">@Model.Client.NombreEmploye</td>
+                <td>@Model.Client.SecteurActivite</td>
+            </tr>   
+    </tbody>
+</table>

@@ -40,7 +40,7 @@ namespace OdooScopeWeb.Controllers
             {
                 _context.Clients.Add(c);
                 _context.SaveChanges();
-                return RedirectToAction("Form", "Question", new { notes = notes });
+                return RedirectToAction("Form", "Question", new {newClient = c.Id, notes = notes });
             }
             else
             {

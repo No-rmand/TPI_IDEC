@@ -1,29 +1,49 @@
 ﻿@using OdooScopeEntities.Entities;
 @model List<Question>
 
+<script>
+    const listQuestionJson = [
+                @foreach (Question q in Model)
+        {
+            <text>
+                {
+                    id: @q.Id,
+                    texte: "@q.Texte",
+                    ordre: @q.Ordre,
+                                @if (q.QuestionId == null)
+                {
+                    <text>questionId: null, </text>
+                                }
+                else
+                {
+                    <text>questionId: @q.QuestionId, </text>
+                                }
+                            },
+        </text>
+    }
+            ];
+</script>
+
+<style>
+    .btn-selected {
+        background-color: #198754;
+        color: white;
+        border: 2px solid #198754;
+    }
+</style>
+
 <h1>Questionnaire</h1>
-<form asp-controller="Question" asp-action="New" method="post">
+<form asp-controller="Question" asp-action="Form" method="post">
+    <input type="hidden" name="clientId" value="@ViewBag.NewClient" />
+    <div id="reponseHidden"></div>
     <table class="table table-striped">
         <thead>
             <tr>
-                <td scope="col">Id</td>
                 <td scope="col">Texte</td>
                 <td scope="col">Réponse</td>
             </tr>
         </thead>
-        <tbody>
-            @foreach (Question a in Model)
-            {
-                if (a.QuestionId != null)
-                {
-                    <tr>
-                        <td>@a.Id</td>
-                        <td>@a.Texte</td>
-                        <td><button type="submit" value="true">Oui</button></td>
-                        <td><button type="submit" value="false">Non</button></td>
-                    </tr>
-                }
-            }
+        <tbody id="questionnaireJson">
         </tbody>
     </table>
     <label>Notes</label>
@@ -33,3 +53,104 @@
     <input type="submit" value="Sauver" class="btn btn-sm btn-dark" />
 </form>
 
+<script>
+    const questionParent = listQuestionJson.filter(q => q.questionId === null);
+    questionParent.sort((a, b) => a.ordre - b.ordre);
+    questionParent.forEach(q => {
+        newLine(q, null);
+    });
+
+    function newLine(question, apresElement) {
+        const tbody = document.getElementById("questionnaireJson");
+
+        const tr = document.createElement("tr");
+        tr.id = "ligne-" + question.id;
+
+        const tdTexte = document.createElement("td");
+        tdTexte.innerHTML = question.texte;
+
+        const tdReponse = document.createElement("td");
+
+        const btnOui = document.createElement("button");
+        btnOui.type = "button";
+        btnOui.textContent = "Oui";
+        btnOui.id = "oui-" + question.id;
+
+        const btnNon = document.createElement("button");
+        btnNon.type = "button";
+        btnNon.textContent = "Non";
+        btnNon.id = "non-" + question.id;
+
+        btnOui.addEventListener("click", function () {
+            btnOui.classList.add("btn-selected");
+            btnNon.classList.remove("btn-selected");
+            sauverReponse(question.id, true);
+            questionEnfant(question.id);
+        });
+
+        btnNon.addEventListener("click", function () {
+            btnNon.classList.add("btn-selected");
+            btnOui.classList.remove("btn-selected");
+            sauverReponse(question.id, false);
+            cacherEnfants(question.id);
+        });
+
+        tdReponse.appendChild(btnOui);
+        tdReponse.appendChild(btnNon);
+
+        tr.appendChild(tdTexte);
+        tr.appendChild(tdReponse);
+
+        if (apresElement) {
+            apresElement.insertAdjacentElement("afterend", tr);
+        } else {
+            tbody.appendChild(tr);
+        }
+    }
+
+    function questionEnfant(parentId) {
+        const enfants = listQuestionJson.filter(q => q.questionId === parentId);
+        enfants.sort((a, b) => a.ordre - b.ordre);
+
+        let ligneReference = document.getElementById("ligne-" + parentId);
+
+        enfants.forEach(enfant => {
+            if (!document.getElementById("ligne-" + enfant.id)) {
+                newLine(enfant, ligneReference);
+                ligneReference = document.getElementById("ligne-" + enfant.id);
+            }
+        });
+    }
+
+    function cacherEnfants(parentId) {
+        const enfants = listQuestionJson.filter(q => q.questionId === parentId);
+
+        enfants.forEach(enfant => {
+            cacherEnfants(enfant.id);
+            const ligne = document.getElementById("ligne-" + enfant.id);
+            if (ligne) ligne.remove();
+        });
+    }
+
+    function sauverReponse(questionId, valeur) {
+        let qid = document.getElementById("id-" + questionId);
+        let rep = document.getElementById("reponse-" + questionId);
+
+        if (!qid) {
+            qid = document.createElement("input");
+            qid.type = "hidden";
+            qid.id = "id-" + questionId;
+            qid.name = "questionIds";
+            document.getElementById("reponseHidden").appendChild(qid);
+
+            rep = document.createElement("input");
+            rep.type = "hidden";
+            rep.id = "reponse-" + questionId;
+            rep.name = "reponses";
+            document.getElementById("reponseHidden").appendChild(rep);
+        }
+
+        qid.value = questionId;
+        rep.value = valeur;
+    }
+</script>
