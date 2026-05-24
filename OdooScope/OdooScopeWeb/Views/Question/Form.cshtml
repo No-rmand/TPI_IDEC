@@ -10,17 +10,17 @@
                     id: @q.Id,
                     texte: "@q.Texte",
                     ordre: @q.Ordre,
-                                @if (q.QuestionId == null)
-                {
+                        @if (q.QuestionId == null)
+                        {
                     <text>questionId: null, </text>
-                                }
+                        }
                 else
-                {
+                        {
                     <text>questionId: @q.QuestionId, </text>
-                                }
-                            },
-        </text>
-    }
+                        }
+                },
+            </text>
+        }
             ];
 </script>
 
@@ -94,6 +94,9 @@
             sauverReponse(question.id, false);
             cacherEnfants(question.id);
         });
+
+        btnNon.classList.add("btn-selected");
+        sauverReponse(question.id, false);
 
         tdReponse.appendChild(btnOui);
         tdReponse.appendChild(btnNon);

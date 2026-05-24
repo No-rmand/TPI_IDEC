@@ -11,10 +11,22 @@ namespace OdooScopeWeb.Controllers
         {
             _context = context;
         }
-        public IActionResult Result(Client c, string notes)
+        public IActionResult Result(int clientId, string notes)
         {
-            List<ApplicationOdoo> list = _context.ApplicationOdoos.ToList();
-            return View(list);
+            Resultat resultat = _context.Resultats.Include(r => r.Client).ThenInclude(s => s.SecteurActivite).FirstOrDefault(r => r.ClientId == clientId);
+
+            List<CreationListe> appOdoo = _context.CreationListes.Where(cl => cl.ResultatId == resultat.Id).Include(cl => cl.ApplicationOdoo).ToList();
+
+            ViewBag.Applications = appOdoo;
+
+            return View(resultat);
         }
+
+        public IActionResult NewClient(Client c, string notes)
+        {
+            List<Client> liste = _context.Clients.Include(c => c.SecteurActivite).ToList();
+            return View(liste);
+        }
+
     }
 }

@@ -26,6 +26,16 @@ namespace OdooScopeWeb.Controllers
             return View(liste);
 
         }
+
+        [HttpGet]
+        public IActionResult Form(int newClient, string notes)
+        {
+            List<Question> questionnaire = _context.Questions.Include(q => q.SecteurActivite).OrderBy(q => q.Ordre).ToList();
+            ViewBag.NewClient = newClient;
+            ViewBag.Notes = notes;
+            return View(questionnaire);
+        }
+
         [HttpPost]
         public IActionResult Form(int clientId, string notes, List<int> questionIds, List<bool> reponses)
         {
@@ -42,16 +52,55 @@ namespace OdooScopeWeb.Controllers
             }
             _context.SaveChanges();
 
-            return RedirectToAction("Result", "Resultat", new { clientId = clientId, note = notes});
+            List<Repondre> reponduOui = _context.Repondres.Where(c => c.ClientId == clientId && c.Reponse == true).ToList();
+
+            List<int> appOdoo = new List<int>();
+
+            foreach (Repondre r in reponduOui)
+            {
+                List<QuestionApplication> qApp = _context.QuestionApplications.Where(qa => qa.QuestionId == r.QuestionId).ToList();
+
+                foreach (QuestionApplication qa in qApp)
+                {
+                    if (qa.ApplicationOdooId != null)
+                    {
+                        appOdoo.Add(qa.ApplicationOdooId.Value);
+                    }
+                }
+            }
+
+            Client client = _context.Clients.FirstOrDefault(c => c.Id == clientId);
+
+            List<ApplicationOdoo> appEssentielles = _context.ApplicationOdoos.Where(sa => sa.EstEssentiel == true && (sa.SecteurActiviteId == null || sa.SecteurActiviteId == client.SecteurActiviteId)).ToList();
+
+            foreach (ApplicationOdoo app in appEssentielles)
+            {
+                appOdoo.Add(app.Id);
+            }
+
+            Resultat resultat = new Resultat
+            {
+                ClientId = clientId,
+                DateGeneration = DateOnly.FromDateTime(DateTime.Now),
+                Notes = notes
+            };
+
+            _context.Resultats.Add(resultat);
+            _context.SaveChanges();
+
+            foreach (int appId in appOdoo)
+            {
+                _context.CreationListes.Add(new CreationListe
+                {
+                    ResultatId = resultat.Id,
+                    ApplicationOdooId = appId
+                });
+            }
+            _context.SaveChanges();
+
+            return RedirectToAction("Result", "Resultat", new { clientId = clientId, notes = notes});
         }
 
-        [HttpGet]
-        public IActionResult Form(int newClient, string notes)
-        {
-            List<Question> questionnaire = _context.Questions.Include(q => q.SecteurActivite).OrderBy(q => q.Ordre).ToList();
-            ViewBag.NewClient = newClient;
-            ViewBag.Notes = notes;
-            return View(questionnaire);
-        }
+
     }
 }

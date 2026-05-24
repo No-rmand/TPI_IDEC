@@ -68,18 +68,20 @@ public partial class SqlServerContext : DbContext
 
         modelBuilder.Entity<CreationListe>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Creation__3214EC07CB89C88B");
+            entity.HasKey(e => e.Id).HasName("PK__Creation__3214EC07AE1468A8");
 
             entity.ToTable("CreationListe");
 
-            entity.Property(e => e.Id).ValueGeneratedNever();
+            entity.HasIndex(e => e.Id, "UQ__Creation__3214EC068F971681").IsUnique();
 
             entity.HasOne(d => d.ApplicationOdoo).WithMany(p => p.CreationListes)
                 .HasForeignKey(d => d.ApplicationOdooId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_CL_Application");
 
             entity.HasOne(d => d.Resultat).WithMany(p => p.CreationListes)
                 .HasForeignKey(d => d.ResultatId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_CL_Resultat");
         });
 

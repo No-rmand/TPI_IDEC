@@ -1,23 +1,49 @@
 ﻿@using OdooScopeEntities.Entities;
 @model Resultat
 
-<h1>Resultat</h1>
+<h1>Résultat</h1>
 
+<h2>Client</h2>
 <table class="table table-striped">
     <thead>
         <tr>
-            <td scope="col">Nom</td>
-            <td scope="col">Email</td>
-            <td scope="col">NombreEmploye</td>
-            <td scope="col">SecteurActivite</td>
+            <th>Nom</th>
+            <th>Email</th>
+            <th>Nombre d'employés</th>
+            <th>Secteur d'activité</th>
         </tr>
     </thead>
     <tbody>
-            <tr>
-                <td scope="col">@Model.Client.Nom</td>
-                <td scope="col">@Model.Client.Email</td>
-                <td scope="col">@Model.Client.NombreEmploye</td>
-                <td>@Model.Client.SecteurActivite</td>
-            </tr>   
+        <tr>
+            <td>@Model.Client.Nom</td>
+            <td>@Model.Client.Email</td>
+            <td>@Model.Client.NombreEmploye</td>
+            <td>@Model.Client.SecteurActivite.Nom</td>
+        </tr>
     </tbody>
 </table>
+
+<h2>Applications Odoo</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Description</th>
+            <th>Essentielle</th>
+            <th>Administrative</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (CreationListe cl in (List<CreationListe>)ViewBag.Applications)
+        {
+            <tr>
+                <td>@cl.ApplicationOdoo.Nom</td>
+                <td>@cl.ApplicationOdoo.Description</td>
+                <td>@(cl.ApplicationOdoo.EstEssentiel ? "Oui" : "Non")</td>
+                <td>@(cl.ApplicationOdoo.EstAdministrative ? "Oui" : "Non")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>@Model.Notes</p>
