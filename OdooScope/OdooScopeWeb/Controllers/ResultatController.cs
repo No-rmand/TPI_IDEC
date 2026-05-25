@@ -28,5 +28,15 @@ namespace OdooScopeWeb.Controllers
             return View(liste);
         }
 
+        [HttpPost]
+        public IActionResult UpdateNotes(int resultatId, string notes)
+        {
+            Resultat resultat = _context.Resultats.FirstOrDefault(r => r.Id == resultatId);
+            resultat.Notes = notes;
+            _context.Resultats.Update(resultat);
+            _context.SaveChanges();
+            return RedirectToAction("Result", new { clientId = resultat.ClientId, notes = notes });
+        }
+
     }
 }

@@ -17,6 +17,8 @@ public partial class ApplicationOdoo
 
     public int? SecteurActiviteId { get; set; }
 
+    public int? EmployeMin { get; set; }
+
     public virtual ICollection<CreationListe> CreationListes { get; set; } = new List<CreationListe>();
 
     public virtual ICollection<QuestionApplication> QuestionApplications { get; set; } = new List<QuestionApplication>();

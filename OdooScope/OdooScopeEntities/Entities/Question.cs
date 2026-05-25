@@ -13,11 +13,7 @@ public partial class Question
 
     public int? QuestionId { get; set; }
 
-    public int? SecteurActiviteId { get; set; }
-
     public virtual ICollection<QuestionApplication> QuestionApplications { get; set; } = new List<QuestionApplication>();
 
     public virtual ICollection<Repondre> Repondres { get; set; } = new List<Repondre>();
-
-    public virtual SecteurActivite? SecteurActivite { get; set; }
 }

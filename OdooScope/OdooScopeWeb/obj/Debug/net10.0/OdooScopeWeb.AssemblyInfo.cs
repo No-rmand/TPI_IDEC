@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OdooScopeWeb")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3b2e5afb2c510a2ff9665f772f496ccf51ddf2bf")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ce5c4c582f3e35981993344dca047533fc4184f0")]
 [assembly: System.Reflection.AssemblyProductAttribute("OdooScopeWeb")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OdooScopeWeb")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

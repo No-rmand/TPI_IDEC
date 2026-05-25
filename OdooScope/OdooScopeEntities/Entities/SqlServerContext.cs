@@ -92,10 +92,6 @@ public partial class SqlServerContext : DbContext
             entity.ToTable("Question");
 
             entity.HasIndex(e => e.Id, "UQ__Question__3214EC0602CD04A1").IsUnique();
-
-            entity.HasOne(d => d.SecteurActivite).WithMany(p => p.Questions)
-                .HasForeignKey(d => d.SecteurActiviteId)
-                .HasConstraintName("Question_fk4");
         });
 
         modelBuilder.Entity<QuestionApplication>(entity =>
