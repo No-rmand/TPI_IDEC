@@ -36,41 +36,56 @@ namespace OdooScopeWeb.Controllers
             // Il est toujorus false si je remplis les champs car il prend secteurActiviteID
             // J'ai obtenu la solution ModelState.Remove de Claude et ça marche comme ça mais pas propre et pas compris
             ModelState.Remove("SecteurActivite");
+
             if (ModelState.IsValid)
             {
                 _context.Clients.Add(c);
                 _context.SaveChanges();
+                TempData["ok"] = "Client créé avec succès.";
                 return RedirectToAction("Form", "Question", new {newClient = c.Id, notes = notes });
             }
             else
             {
                 ViewBag.sa = _context.SecteurActivites.ToList();
+                TempData["ko"] = "Veuillez corriger les erreurs.";
                 return View(c);
             }
 
         }
         [HttpGet]
-        public IActionResult Update(Client c)
+        public IActionResult Update(int id)
         {
-            Client existClient = _context.Clients.FirstOrDefault(c => c.Id == c.Id);
+            Client existClient = _context.Clients.FirstOrDefault(c => c.Id == id);
+            Resultat resultat = _context.Resultats.FirstOrDefault(r => r.ClientId == id);
             ViewBag.sa = _context.SecteurActivites.ToList();
+            ViewBag.Notes = resultat?.Notes;
             return View(existClient);
         }
 
         [HttpPost]
-        public IActionResult UpdateDB(Client c)
+        public IActionResult UpdateDB(Client c, string notes)
         {
             ModelState.Remove("SecteurActivite");
             if (ModelState.IsValid)
             {
                 _context.Clients.Update(c);
+
+                Resultat notesResultat = _context.Resultats.FirstOrDefault(r => r.ClientId == c.Id);
+                if(notesResultat != null)
+                {
+                    notesResultat.Notes = notes;
+                    _context.Resultats.Update(notesResultat);
+                }
                 _context.SaveChanges();
+                TempData["ok"] = "Client mis à jour avec succès.";
                 return RedirectToAction("Menu", "MainMenu");
             }
             else
             {
                 ViewBag.sa = _context.SecteurActivites.ToList();
-                return RedirectToAction("Update", "Client");
+                ViewBag.Notes = notes;
+                TempData["ko"] = "Veuillez corriger les erreurs.";
+                return RedirectToAction("Update", c);
             }
 
         }

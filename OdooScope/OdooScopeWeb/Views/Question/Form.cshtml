@@ -1,28 +1,6 @@
 ﻿@using OdooScopeEntities.Entities;
+@using Newtonsoft.Json;
 @model List<Question>
-
-<script>
-    const listQuestionJson = [
-                @foreach (Question q in Model)
-        {
-            <text>
-                {
-                    id: @q.Id,
-                    texte: "@q.Texte",
-                    ordre: @q.Ordre,
-                        @if (q.QuestionId == null)
-                        {
-                    <text>questionId: null, </text>
-                        }
-                else
-                        {
-                    <text>questionId: @q.QuestionId, </text>
-                        }
-                },
-            </text>
-        }
-            ];
-</script>
 
 <style>
     .btn-selected {
@@ -33,89 +11,89 @@
 </style>
 
 <h1>Questionnaire</h1>
-<form asp-controller="Question" asp-action="Form" method="post">
-    <input type="hidden" name="clientId" value="@ViewBag.NewClient" />
-    <div id="reponseHidden"></div>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <td scope="col">Texte</td>
-                <td scope="col">Réponse</td>
-            </tr>
-        </thead>
-        <tbody id="questionnaireJson">
-        </tbody>
-    </table>
-    <label>Notes</label>
-    <textarea name="Notes">@ViewBag.Notes</textarea>
-    <br />
-    <br />
-    <input type="submit" value="Sauver" class="btn btn-sm btn-dark" />
-</form>
+<div id="reponseHidden"></div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td scope="col">Texte</td>
+            <td scope="col">Réponse</td>
+        </tr>
+    </thead>
+    <tbody id="questionnaireJson">
+    </tbody>
+</table>
+<label>Notes</label>
+<textarea id="Notes">@ViewBag.Notes</textarea>
+<br />
+<br />
+<input type="button" value="Sauver" class="btn btn-sm btn-dark" onclick="Sauver()" />
 
 <script>
-    const questionParent = listQuestionJson.filter(q => q.questionId === null);
+    var listQuestionJson = @Html.Raw(Json.Serialize(Model.Select(q => new
+        {
+            id = q.Id,
+                texte = q.Texte,
+                ordre = q.Ordre,
+                questionId = q.QuestionId
+        })));
+
+    var reponses = {};
+
+    var questionParent = listQuestionJson.filter(q => q.questionId === null);
     questionParent.sort((a, b) => a.ordre - b.ordre);
     questionParent.forEach(q => {
         newLine(q, null);
     });
 
     function newLine(question, apresElement) {
-        const tbody = document.getElementById("questionnaireJson");
+        var tbody = $("#questionnaireJson");
 
-        const tr = document.createElement("tr");
-        tr.id = "ligne-" + question.id;
+        var tr = $("<tr>").attr("id", "ligne-" + question.id);
+        var tdTexte = $("<td>").html(question.texte);
+        var tdReponse = $("<td>");
 
-        const tdTexte = document.createElement("td");
-        tdTexte.innerHTML = question.texte;
+        var btnOui = $("<button>")
+            .attr("type", "button")
+            .attr("id", "oui-" + question.id)
+            .text("Oui");
 
-        const tdReponse = document.createElement("td");
+        var btnNon = $("<button>")
+            .attr("type", "button")
+            .attr("id", "non-" + question.id)
+            .text("Non");
 
-        const btnOui = document.createElement("button");
-        btnOui.type = "button";
-        btnOui.textContent = "Oui";
-        btnOui.id = "oui-" + question.id;
-
-        const btnNon = document.createElement("button");
-        btnNon.type = "button";
-        btnNon.textContent = "Non";
-        btnNon.id = "non-" + question.id;
-
-        btnOui.addEventListener("click", function () {
-            btnOui.classList.add("btn-selected");
-            btnNon.classList.remove("btn-selected");
-            sauverReponse(question.id, true);
+        btnOui.on("click", function () {
+            btnOui.addClass("btn-selected");
+            btnNon.removeClass("btn-selected");
+            reponses[question.id] = true;
             questionEnfant(question.id);
         });
 
-        btnNon.addEventListener("click", function () {
-            btnNon.classList.add("btn-selected");
-            btnOui.classList.remove("btn-selected");
-            sauverReponse(question.id, false);
+        btnNon.on("click", function () {
+            btnNon.addClass("btn-selected");
+            btnOui.removeClass("btn-selected");
+            reponses[question.id] = false;
             cacherEnfants(question.id);
         });
 
-        btnNon.classList.add("btn-selected");
-        sauverReponse(question.id, false);
+        btnNon.addClass("btn-selected");
+        reponses[question.id] = false;
 
-        tdReponse.appendChild(btnOui);
-        tdReponse.appendChild(btnNon);
-
-        tr.appendChild(tdTexte);
-        tr.appendChild(tdReponse);
+        tdReponse.append(btnOui).append(btnNon);
+        tr.append(tdTexte).append(tdReponse);
 
         if (apresElement) {
-            apresElement.insertAdjacentElement("afterend", tr);
+            $(apresElement).after(tr);
         } else {
-            tbody.appendChild(tr);
+            tbody.append(tr);
         }
     }
 
     function questionEnfant(parentId) {
-        const enfants = listQuestionJson.filter(q => q.questionId === parentId);
+        var enfants = listQuestionJson.filter(q => q.questionId === parentId);
         enfants.sort((a, b) => a.ordre - b.ordre);
 
-        let ligneReference = document.getElementById("ligne-" + parentId);
+        var ligneReference = document.getElementById("ligne-" + parentId);
 
         enfants.forEach(enfant => {
             if (!document.getElementById("ligne-" + enfant.id)) {
@@ -126,34 +104,46 @@
     }
 
     function cacherEnfants(parentId) {
-        const enfants = listQuestionJson.filter(q => q.questionId === parentId);
+        var enfants = listQuestionJson.filter(q => q.questionId === parentId);
 
         enfants.forEach(enfant => {
             cacherEnfants(enfant.id);
-            const ligne = document.getElementById("ligne-" + enfant.id);
-            if (ligne) ligne.remove();
+            delete reponses[enfant.id];
+            $("#ligne-" + enfant.id).remove();
         });
     }
 
-    function sauverReponse(questionId, valeur) {
-        let qid = document.getElementById("id-" + questionId);
-        let rep = document.getElementById("reponse-" + questionId);
+    function Sauver() {
+        var questionIds = [];
+        var reponseValeurs = [];
 
-        if (!qid) {
-            qid = document.createElement("input");
-            qid.type = "hidden";
-            qid.id = "id-" + questionId;
-            qid.name = "questionIds";
-            document.getElementById("reponseHidden").appendChild(qid);
-
-            rep = document.createElement("input");
-            rep.type = "hidden";
-            rep.id = "reponse-" + questionId;
-            rep.name = "reponses";
-            document.getElementById("reponseHidden").appendChild(rep);
+        for (var id in reponses) {
+            questionIds.push(parseInt(id));
+            reponseValeurs.push(reponses[id]);
         }
 
-        qid.value = questionId;
-        rep.value = valeur;
+        var notes = $("#Notes").val();
+        var clientId = @ViewBag.NewClient;
+
+        var jsonData = {
+            "clientId": clientId,
+            "notes": notes,
+            "questionIds": questionIds,
+            "reponses": reponseValeurs
+        };
+
+        $.ajax({
+            dataType: "json",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(jsonData),
+            url: "/Question/Form",
+            success: function (data) {
+                window.location.replace("/Resultat/Result?clientId=" + clientId);
+            },
+            error: function () {
+                alert("Une erreur est survenue lors de la sauvegarde.");
+            }
+        });
     }
 </script>

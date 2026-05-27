@@ -1,5 +1,191 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@using OdooScopeEntities.Entities;
+@using Newtonsoft.Json;
+@model List<Question>
+
+<style>
+    .btn-selected {
+        background-color: #198754;
+        color: white;
+        border: 2px solid #198754;
+    }
+</style>
+
+<h1>Questionnaire</h1>
+
+<h2>Client</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Email</th>
+            <th>Nombre d'employés</th>
+            <th>Secteur d'activité</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@ViewBag.Client.Nom</td>
+            <td>@ViewBag.Client.Email</td>
+            <td>@ViewBag.Client.NombreEmploye</td>
+            <td>@ViewBag.Client.SecteurActivite.Nom</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Questionnaire</h2>
+<div id="reponseHidden"></div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td scope="col">Texte</td>
+            <td scope="col">Réponse</td>
+        </tr>
+    </thead>
+    <tbody id="questionnaireJson">
+    </tbody>
+</table>
+<label>Notes</label>
+<textarea id="Notes">@ViewBag.Notes</textarea>
+<br />
+<br />
+<input type="button" value="Sauver" class="btn btn-sm btn-dark" onclick="Sauver()" />
+
+<script>
+    var listQuestionJson = @Html.Raw(Json.Serialize(Model.Select(q => new
+        {
+            id = q.Id,
+            texte = q.Texte,
+            ordre = q.Ordre,
+            questionId = q.QuestionId
+    })));
+
+    var reponsesExistantes = @Html.Raw(Json.Serialize(
+                ((List<Repondre>)ViewBag.ReponsesExistantes).Select(r => new
+                {
+                        questionId = r.QuestionId,
+                        reponse = r.Reponse
+                })
+                ));
+
+    var reponses = {};
+
+    var questionParent = listQuestionJson.filter(q => q.questionId === null);
+    questionParent.sort((a, b) => a.ordre - b.ordre);
+    questionParent.forEach(q => {
+        newLine(q, null);
+    });
+
+    function newLine(question, apresElement) {
+        var tbody = $("#questionnaireJson");
+
+        var tr = $("<tr>").attr("id", "ligne-" + question.id);
+        var tdTexte = $("<td>").html(question.texte);
+        var tdReponse = $("<td>");
+
+        var btnOui = $("<button>")
+            .attr("type", "button")
+            .attr("id", "oui-" + question.id)
+            .text("Oui");
+
+        var btnNon = $("<button>")
+            .attr("type", "button")
+            .attr("id", "non-" + question.id)
+            .text("Non");
+
+        btnOui.on("click", function () {
+            btnOui.addClass("btn-selected");
+            btnNon.removeClass("btn-selected");
+            reponses[question.id] = true;
+            questionEnfant(question.id);
+        });
+
+        btnNon.on("click", function () {
+            btnNon.addClass("btn-selected");
+            btnOui.removeClass("btn-selected");
+            reponses[question.id] = false;
+            cacherEnfants(question.id);
+        });
+
+        // Appliquer réponse existante ou Non par défaut
+        var reponseExistante = reponsesExistantes.find(r => r.questionId === question.id);
+        if (reponseExistante && reponseExistante.reponse === true) {
+            btnOui.addClass("btn-selected");
+            reponses[question.id] = true;
+        } else {
+            btnNon.addClass("btn-selected");
+            reponses[question.id] = false;
+        }
+
+        tdReponse.append(btnOui).append(btnNon);
+        tr.append(tdTexte).append(tdReponse);
+
+        if (apresElement) {
+            $(apresElement).after(tr);
+        } else {
+            tbody.append(tr);
+        }
+    }
+
+    function questionEnfant(parentId) {
+        var enfants = listQuestionJson.filter(q => q.questionId === parentId);
+        enfants.sort((a, b) => a.ordre - b.ordre);
+
+        var ligneReference = document.getElementById("ligne-" + parentId);
+
+        enfants.forEach(enfant => {
+            if (!document.getElementById("ligne-" + enfant.id)) {
+                newLine(enfant, ligneReference);
+                ligneReference = document.getElementById("ligne-" + enfant.id);
+            }
+        });
+    }
+
+    function cacherEnfants(parentId) {
+        var enfants = listQuestionJson.filter(q => q.questionId === parentId);
+
+        enfants.forEach(enfant => {
+            cacherEnfants(enfant.id);
+            delete reponses[enfant.id];
+            $("#ligne-" + enfant.id).remove();
+        });
+    }
+
+    function Sauver() {
+        var questionIds = [];
+        var reponseValeurs = [];
+
+        for (var id in reponses) {
+            questionIds.push(parseInt(id));
+            reponseValeurs.push(reponses[id]);
+        }
+
+        if (questionIds.length === 0) {
+            alert("Veuillez répondre à au moins une question.");
+            return;
+        }
+
+        var notes = $("#Notes").val();
+        var clientId = @ViewBag.ClientId;
+
+        var jsonData = {
+            "clientId": clientId,
+            "notes": notes,
+            "questionIds": questionIds,
+            "reponses": reponseValeurs
+        };
+
+        $.ajax({
+            dataType: "json",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(jsonData),
+            url: "/Question/Update",
+            success: function () {
+                window.location.replace("/Resultat/Result?clientId=" + clientId);
+            },
+            error: function () {
+                alert("Une erreur est survenue lors de la sauvegarde.");
+            }
+        });
+    }
+</script>

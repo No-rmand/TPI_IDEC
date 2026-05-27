@@ -25,7 +25,7 @@
                 <td>
                     <a asp-controller="Client" asp-action="Update" asp-route-id="@c.Id" class="btn btn-sm btn-dark">Client</a>
                     <a asp-controller="Question" asp-action="Update" asp-route-id="@c.Id" class="btn btn-sm btn-dark">Question</a>
-                    <a asp-controller="Resultat" asp-action="Result" asp-route-id="@c.Id" class="btn btn-sm btn-dark">Resultat</a>
+                    <a asp-controller="Resultat" asp-action="Result" asp-route-clientId="@c.Id" class="btn btn-sm btn-dark">Resultat</a>
                     @*
                         Liaisons à faire vers le bon chemin
                         pour client et question = formulaire nouveau client remplis avec les infos / questionnaire avec les réponses

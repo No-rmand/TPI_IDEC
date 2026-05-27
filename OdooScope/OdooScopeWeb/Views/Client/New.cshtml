@@ -3,26 +3,40 @@
 
 <form asp-controller="Client" asp-action="New" method="post">
     <label>Nom</label>
-        <input asp-for="Nom" />
-    <br/>
-    <lable>Email</lable>
-        <input asp-for="Email" />
+    <input asp-for="Nom" />
+    <span asp-validation-for="Nom" style="color:red;"></span>
     <br />
+
+    <label>Email</label>
+    <input asp-for="Email" />
+    <span asp-validation-for="Email" style="color:red;"></span>
+    <br />
+
     <label>NombreEmploye</label>
-        <input asp-for="NombreEmploye" />
+    <input asp-for="NombreEmploye" />
+    <span asp-validation-for="NombreEmploye" style="color:red;"></span>
     <br />
+
     <label>SecteurActivite</label>
-        <select asp-for="SecteurActiviteId">
-            <option value="Choix">------</option>
-            @foreach (SecteurActivite sa in (List<SecteurActivite>)ViewBag.sa)
-            {
-                <option value="@sa.Id">@sa.Nom</option>
-            }
-        </select>
+    <select asp-for="SecteurActiviteId">
+        <option value="0">------</option>
+        @foreach (SecteurActivite sa in (List<SecteurActivite>)ViewBag.sa)
+        {
+            <option value="@sa.Id">@sa.Nom</option>
+        }
+    </select>
+    <span asp-validation-for="SecteurActiviteId" style="color:red;"></span>
     <br />
+
     <label>Notes</label>
     <textarea name="Notes">@ViewBag.Notes</textarea>
     <br />
     <br />
+
     <input type="submit" value="Sauver" class="btn btn-sm btn-dark" />
 </form>
+
+@section Scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
+}

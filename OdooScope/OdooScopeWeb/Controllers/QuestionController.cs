@@ -4,6 +4,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace OdooScopeWeb.Controllers
 {
+    public class QuestionnaireData
+    {
+        public int ClientId { get; set; }
+        public string Notes { get; set; }
+        public List<int> QuestionIds { get; set; }
+        public List<bool> Reponses { get; set; }
+    }
+
     public class QuestionController : Controller
     {
         private SqlServerContext _context;
@@ -11,20 +19,11 @@ namespace OdooScopeWeb.Controllers
         {
             _context = context;
         }
-        public IActionResult New()
-        {
-            List<Question> list = _context.Questions.OrderBy(q => q.Ordre).ToList();
-            return View(list);
-            // YVES j'ai besoin de formation sur JS pour:
-            // masquer les QuestionId == null
-            // les afficher si réponse = Oui
-        }
 
         public IActionResult List()
         {
             List<Question> liste = _context.Questions.ToList();
             return View(liste);
-
         }
 
         [HttpGet]
@@ -37,24 +36,24 @@ namespace OdooScopeWeb.Controllers
         }
 
         [HttpPost]
-        public IActionResult Form(int clientId, string notes, List<int> questionIds, List<bool> reponses)
+        public IActionResult Form([FromBody] QuestionnaireData data)
         {
-
-            for (int i = 0; i < questionIds.Count; i++)
+            for (int i = 0; i < data.QuestionIds.Count; i++)
             {
-                Repondre r = new Repondre
+                _context.Repondres.Add(new Repondre
                 {
-                    ClientId = clientId,
-                    QuestionId = questionIds[i],
-                    Reponse = reponses[i],
-                };
-                _context.Repondres.Add(r);
+                    ClientId = data.ClientId,
+                    QuestionId = data.QuestionIds[i],
+                    Reponse = data.Reponses[i]
+                });
             }
             _context.SaveChanges();
 
-            Client client = _context.Clients.FirstOrDefault(c => c.Id == clientId);
+            Client client = _context.Clients.FirstOrDefault(c => c.Id == data.ClientId);
 
-            List<Repondre> reponduOui = _context.Repondres.Where(c => c.ClientId == clientId && c.Reponse == true).ToList();
+            List<Repondre> reponduOui = _context.Repondres
+                .Where(r => r.ClientId == data.ClientId && r.Reponse == true)
+                .ToList();
 
             List<int> appOdoo = new List<int>();
 
@@ -75,26 +74,28 @@ namespace OdooScopeWeb.Controllers
                 }
             }
 
-
             List<ApplicationOdoo> appEssentielles = _context.ApplicationOdoos
-                .Where(sa => sa.EstEssentiel == true &&(sa.SecteurActiviteId == null || sa.SecteurActiviteId == client.SecteurActiviteId) &&(sa.EmployeMin == null || sa.EmployeMin <= client.NombreEmploye)).ToList();
+                .Where(a => a.EstEssentiel == true &&
+                       (a.SecteurActiviteId == null || a.SecteurActiviteId == client.SecteurActiviteId) &&
+                       (a.EmployeMin == null || a.EmployeMin <= client.NombreEmploye))
+                .ToList();
 
             foreach (ApplicationOdoo app in appEssentielles)
             {
                 appOdoo.Add(app.Id);
             }
 
+            appOdoo = appOdoo.Distinct().ToList();
+
             Resultat resultat = new Resultat
             {
-                ClientId = clientId,
+                ClientId = data.ClientId,
                 DateGeneration = DateOnly.FromDateTime(DateTime.Now),
-                Notes = notes
+                Notes = data.Notes
             };
 
             _context.Resultats.Add(resultat);
             _context.SaveChanges();
-
-            appOdoo = appOdoo.Distinct().ToList();
 
             foreach (int appId in appOdoo)
             {
@@ -106,9 +107,107 @@ namespace OdooScopeWeb.Controllers
             }
             _context.SaveChanges();
 
-            return RedirectToAction("Result", "Resultat", new { clientId = clientId, notes = notes});
+            return Json(new { success = true });
         }
 
+        [HttpGet]
+        public IActionResult Update(int id)
+        {
+            List<Question> questionnaire = _context.Questions.OrderBy(q => q.Ordre).ToList();
+            List<Repondre> reponsesExistantes = _context.Repondres.Where(r => r.ClientId == id).ToList();
+            Client client = _context.Clients.Include(c => c.SecteurActivite).FirstOrDefault(c => c.Id == id);
+            Resultat resultat = _context.Resultats.FirstOrDefault(r => r.ClientId == id);
 
+            ViewBag.Client = client;
+            ViewBag.ClientId = id;
+            ViewBag.Notes = resultat?.Notes;
+            ViewBag.ReponsesExistantes = reponsesExistantes;
+
+            return View(questionnaire);
+        }
+
+        [HttpPost]
+        public IActionResult Update([FromBody] QuestionnaireData data)
+        {
+            List<Repondre> anciennes = _context.Repondres
+                .Where(r => r.ClientId == data.ClientId)
+                .ToList();
+            _context.Repondres.RemoveRange(anciennes);
+            _context.SaveChanges();
+
+            for (int i = 0; i < data.QuestionIds.Count; i++)
+            {
+                _context.Repondres.Add(new Repondre
+                {
+                    ClientId = data.ClientId,
+                    QuestionId = data.QuestionIds[i],
+                    Reponse = data.Reponses[i]
+                });
+            }
+            _context.SaveChanges();
+
+            Client client = _context.Clients.FirstOrDefault(c => c.Id == data.ClientId);
+
+            List<Repondre> reponduOui = _context.Repondres
+                .Where(r => r.ClientId == data.ClientId && r.Reponse == true)
+                .ToList();
+
+            List<int> appOdoo = new List<int>();
+
+            foreach (Repondre r in reponduOui)
+            {
+                List<QuestionApplication> qApp = _context.QuestionApplications
+                    .Where(qa => qa.QuestionId == r.QuestionId)
+                    .Include(qa => qa.ApplicationOdoo)
+                    .ToList();
+
+                foreach (QuestionApplication qa in qApp)
+                {
+                    if (qa.ApplicationOdooId != null &&
+                        (qa.ApplicationOdoo.EmployeMin == null || qa.ApplicationOdoo.EmployeMin <= client.NombreEmploye))
+                    {
+                        appOdoo.Add(qa.ApplicationOdooId.Value);
+                    }
+                }
+            }
+
+            List<ApplicationOdoo> appEssentielles = _context.ApplicationOdoos
+                .Where(a => a.EstEssentiel == true &&
+                       (a.SecteurActiviteId == null || a.SecteurActiviteId == client.SecteurActiviteId) &&
+                       (a.EmployeMin == null || a.EmployeMin <= client.NombreEmploye))
+                .ToList();
+
+            foreach (ApplicationOdoo app in appEssentielles)
+            {
+                appOdoo.Add(app.Id);
+            }
+
+            appOdoo = appOdoo.Distinct().ToList();
+
+            Resultat ancienResultat = _context.Resultats.FirstOrDefault(r => r.ClientId == data.ClientId);
+            if (ancienResultat != null)
+            {
+                List<CreationListe> anciennesListes = _context.CreationListes
+                    .Where(cl => cl.ResultatId == ancienResultat.Id)
+                    .ToList();
+                _context.CreationListes.RemoveRange(anciennesListes);
+                ancienResultat.Notes = data.Notes;
+                ancienResultat.DateGeneration = DateOnly.FromDateTime(DateTime.Now);
+                _context.Resultats.Update(ancienResultat);
+                _context.SaveChanges();
+
+                foreach (int appId in appOdoo)
+                {
+                    _context.CreationListes.Add(new CreationListe
+                    {
+                        ResultatId = ancienResultat.Id,
+                        ApplicationOdooId = appId
+                    });
+                }
+                _context.SaveChanges();
+            }
+
+            return Json(new { success = true });
+        }
     }
 }

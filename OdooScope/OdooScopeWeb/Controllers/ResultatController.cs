@@ -35,6 +35,7 @@ namespace OdooScopeWeb.Controllers
             resultat.Notes = notes;
             _context.Resultats.Update(resultat);
             _context.SaveChanges();
+            TempData["ok"] = "Notes mises à jour avec succès.";
             return RedirectToAction("Result", new { clientId = resultat.ClientId, notes = notes });
         }
 

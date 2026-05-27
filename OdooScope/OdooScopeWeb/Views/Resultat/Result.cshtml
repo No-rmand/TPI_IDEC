@@ -48,7 +48,8 @@
 
 <h2>Notes</h2>
 <form asp-controller="Resultat" asp-action="UpdateNotes" method="post">
-    <textarea>@Model.Notes</textarea>
+    <input type="hidden" name="resultatId" value="@Model.Id" />
+    <textarea name="notes">@Model.Notes</textarea>
     <br />
     <input type="submit" value="Sauvegarder les notes" class="btn btn-sm btn-dark" />
 </form>

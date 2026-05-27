@@ -1,0 +1,12 @@
+﻿@if (TempData["ok"] != null && TempData["ok"].ToString() != "")
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["ok"]
+    </div>
+}
+@if (TempData["ko"] != null && TempData["ko"].ToString() != "")
+{
+    <div class="alert alert-danger" role="alert">
+        @TempData["ko"]
+    </div>
+}
