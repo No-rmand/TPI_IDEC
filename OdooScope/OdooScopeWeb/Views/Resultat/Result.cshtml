@@ -23,14 +23,14 @@
     </tbody>
 </table>
 
-<h2>Applications Odoo</h2>
+<h2>Applications Odoo sélectionnées</h2>
 <table class="table table-striped">
     <thead>
         <tr>
             <th>Nom</th>
             <th>Description</th>
-            <th>Essentielle</th>
-            <th>Administrative</th>
+            <th class="text-center">Essentielle</th>
+            <th class="text-center">Administrative</th>
         </tr>
     </thead>
     <tbody>
@@ -39,19 +39,21 @@
             <tr>
                 <td>@cl.ApplicationOdoo.Nom</td>
                 <td>@cl.ApplicationOdoo.Description</td>
-                <td>@(cl.ApplicationOdoo.EstEssentiel ? "Oui" : "Non")</td>
-                <td>@(cl.ApplicationOdoo.EstAdministrative ? "Oui" : "Non")</td>
+                <td class="text-center"><span class="@(cl.ApplicationOdoo.EstEssentiel ? "icone-oui" : "icone-non")"></span></td>
+                <td class="text-center"><span class="@(cl.ApplicationOdoo.EstAdministrative ? "icone-oui" : "icone-non")"></span></td>
             </tr>
         }
     </tbody>
 </table>
 
 <h2>Notes</h2>
-<form asp-controller="Resultat" asp-action="UpdateNotes" method="post">
-    <input type="hidden" name="resultatId" value="@Model.Id" />
-    <textarea name="notes">@Model.Notes</textarea>
-    <br />
-    <input type="submit" value="Sauvegarder les notes" class="btn btn-sm btn-dark" />
-</form>
-<br />
-<a asp-controller="MainMenu" asp-action="Menu" class="btn btn-sm btn-dark">Retour au menu</a>
+<div class="d-flex flex-column align-items-center mt-3 mb-5">
+    <form asp-controller="Resultat" asp-action="UpdateNotes" method="post" style="width: 700px;">
+        <input type="hidden" name="resultatId" value="@Model.Id" />
+        <textarea name="notes" class="form-control mb-3" rows="4">@Model.Notes</textarea>
+        <div class="d-flex justify-content-center gap-3">
+            <input type="submit" value="Sauvegarder les notes" class="btn btn-dark" style="width: 250px;" />
+            <a asp-controller="MainMenu" asp-action="Menu" class="btn btn-dark" style="width: 250px;">Retour au menu</a>
+        </div>
+    </form>
+</div>

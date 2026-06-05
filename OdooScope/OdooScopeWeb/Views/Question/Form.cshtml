@@ -2,31 +2,35 @@
 @using Newtonsoft.Json;
 @model List<Question>
 
-<style>
-    .btn-selected {
-        background-color: #198754;
-        color: white;
-        border: 2px solid #198754;
-    }
-</style>
-
 <h1>Questionnaire</h1>
-<div id="reponseHidden"></div>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <td scope="col">Texte</td>
-            <td scope="col">Réponse</td>
-        </tr>
-    </thead>
-    <tbody id="questionnaireJson">
-    </tbody>
-</table>
-<label>Notes</label>
-<textarea id="Notes">@ViewBag.Notes</textarea>
-<br />
-<br />
-<input type="button" value="Sauver" class="btn btn-sm btn-dark" onclick="Sauver()" />
+
+<div class="d-flex flex-column align-items-center mt-4">
+    <div style="width: 700px;">
+
+        <div id="reponseHidden"></div>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Question</th>
+                    <th scope="col" style="width: 150px; text-align: center;">Réponse</th>
+                </tr>
+            </thead>
+            <tbody id="questionnaireJson">
+            </tbody>
+        </table>
+
+        <div class="mb-4 mt-3">
+            <label class="form-label">Notes</label>
+            <textarea id="Notes" class="form-control" rows="3">@ViewBag.Notes</textarea>
+        </div>
+
+        <div class="d-flex justify-content-center mb-5">
+            <input type="button" value="Sauver" class="btn btn-dark" style="width: 250px;" onclick="Sauver()" />
+        </div>
+
+    </div>
+</div>
 
 <script>
     var listQuestionJson = @Html.Raw(Json.Serialize(Model.Select(q => new
@@ -50,28 +54,31 @@
 
         var tr = $("<tr>").attr("id", "ligne-" + question.id);
         var tdTexte = $("<td>").html(question.texte);
-        var tdReponse = $("<td>");
+        var tdReponse = $("<td>").css({ "text-align": "center", "white-space": "nowrap" });
 
         var btnOui = $("<button>")
             .attr("type", "button")
             .attr("id", "oui-" + question.id)
-            .text("Oui");
+            .text("Oui")
+            .addClass("btn btn-sm me-2");
 
         var btnNon = $("<button>")
             .attr("type", "button")
             .attr("id", "non-" + question.id)
-            .text("Non");
+            .text("Non")
+            .addClass("btn btn-sm btn-selected");
 
         btnOui.on("click", function () {
-            btnOui.addClass("btn-selected");
-            btnNon.removeClass("btn-selected");
+            btnOui.addClass("btn-oui-selected").removeClass("btn-selected");
+            btnNon.removeClass("btn-selected btn-oui-selected");  // ← retire tout
             reponses[question.id] = true;
             questionEnfant(question.id);
         });
 
+
         btnNon.on("click", function () {
-            btnNon.addClass("btn-selected");
-            btnOui.removeClass("btn-selected");
+            btnNon.addClass("btn-selected").removeClass("btn-oui-selected");
+            btnOui.removeClass("btn-selected btn-oui-selected");  // ← retire tout
             reponses[question.id] = false;
             cacherEnfants(question.id);
         });

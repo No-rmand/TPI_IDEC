@@ -3,13 +3,13 @@
 
 <h1>Liste des Questions</h1>
 
-<table class="table table-striped">
+<table id="tableQuestions" class="table table-striped">
     <thead>
         <tr>
-            <td scope="col">Id</td>
-            <td scope="col">Texte</td>
-            <td scope="col">Ordre</td>
-            <td scope="col">Parent</td>
+            <th scope="col">Id</th>
+            <th scope="col">Texte</th>
+            <th scope="col">Ordre</th>
+            <th scope="col">Parent</th>
         </tr>
     </thead>
     <tbody>
@@ -24,3 +24,31 @@
         }
     </tbody>
 </table>
+
+<script>
+    $(document).ready(function () {
+        var table = $('#tableQuestions').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "pageLength": 25,
+            "ordering": true,
+            "order": [[2, "asc"]],
+            "language": {
+                "search": "",
+                "paginate": { "previous": "Précédent", "next": "Suivant" },
+                "info": "_START_ à _END_ entrée(s) sur _TOTAL_ au total",
+                "infoEmpty": "Aucune entrée",
+                "infoFiltered": "(filtré de _MAX_ entrées au total)",
+                "zeroRecords": "Aucun enregistrement trouvé"
+            },
+            "dom": "<'row'<'col-md-6'l><'col-md-6 d-flex justify-content-end mb-3'f>>" +
+                "<'row'<'col-sm-12'tr>>" +
+                "<'row'<'col-md-6'i><'col-md-6 d-flex justify-content-end'p>>",
+            "initComplete": function () {
+                $(".dataTables_filter input")
+                    .attr("placeholder", "Rechercher...")
+                    .addClass("form-control");
+            }
+        });
+    });
+</script>

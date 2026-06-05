@@ -60,6 +60,7 @@ C:\Users\norma\Documents\GitHub\TPI_IDEC\OdooScope\OdooScopeWeb\wwwroot\lib\boot
 C:\Users\norma\Documents\GitHub\TPI_IDEC\OdooScope\OdooScopeWeb\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map
 C:\Users\norma\Documents\GitHub\TPI_IDEC\OdooScope\OdooScopeWeb\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css
 C:\Users\norma\Documents\GitHub\TPI_IDEC\OdooScope\OdooScopeWeb\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map
+wwwroot\Logo.png
 wwwroot\css\site.css
 wwwroot\favicon.ico
 wwwroot\js\site.js

@@ -1,21 +1,14 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
 }
 
-<h1>OdooScope</h1>
-<br />
-<a asp-controller="Client" asp-action="New" class="btn btn-dark">Nouveau Client</a>
-<br/>
-<br />
-<a asp-controller="Client" asp-action="List" class="btn btn-dark">Client Existant</a>
-<br />
-<br />
-<a asp-controller="SecteurActivite" asp-action="List" class="btn btn-dark">Secteur d'Activité</a>
-<br />
-<br />
-<a asp-controller="Question" asp-action="List" class="btn btn-dark">Question</a>
-<br />
-<br />
-<a asp-controller="ApplicationOdoo" asp-action="List" class="btn btn-dark">Applications Odoo</a>
+<div class="text-center mt-4 mb-5">
+    <img src="~/logo.png" alt="OdooScope" style="max-width: 550px;" />
+</div>
+
+<div class="d-flex flex-column align-items-center gap-3">
+    <a asp-controller="Client" asp-action="New" class="btn btn-dark" style="width: 250px;">Nouveau Client</a>
+    <a asp-controller="Client" asp-action="List" class="btn btn-dark" style="width: 250px;">Client Existant</a>
+    <a asp-controller="SecteurActivite" asp-action="List" class="btn btn-dark" style="width: 250px;">Secteur d'Activité</a>
+    <a asp-controller="Question" asp-action="List" class="btn btn-dark" style="width: 250px;">Question</a>
+    <a asp-controller="ApplicationOdoo" asp-action="List" class="btn btn-dark" style="width: 250px;">Applications Odoo</a>
+</div>

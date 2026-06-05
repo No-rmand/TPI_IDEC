@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using OdooScopeEntities.Entities;
 
 namespace OdooScopeWeb
@@ -10,7 +11,7 @@ namespace OdooScopeWeb
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-            builder.Services.AddDbContextFactory<SqlServerContext>();
+            builder.Services.AddDbContextFactory<SqlServerContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

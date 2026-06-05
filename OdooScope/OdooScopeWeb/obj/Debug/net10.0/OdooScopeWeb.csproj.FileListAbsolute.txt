@@ -167,7 +167,6 @@ C:\Users\norma\Documents\GitHub\TPI_IDEC\OdooScope\OdooScopeWeb\obj\Debug\net10.
 C:\Users\norma\Documents\GitHub\TPI_IDEC\OdooScope\OdooScopeWeb\obj\Debug\net10.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\norma\Documents\GitHub\TPI_IDEC\OdooScope\OdooScopeWeb\obj\Debug\net10.0\scopedcss\bundle\OdooScopeWeb.styles.css
 C:\Users\norma\Documents\GitHub\TPI_IDEC\OdooScope\OdooScopeWeb\obj\Debug\net10.0\scopedcss\projectbundle\OdooScopeWeb.bundle.scp.css
-C:\Users\norma\Documents\GitHub\TPI_IDEC\OdooScope\OdooScopeWeb\obj\Debug\net10.0\compressed\8xi76qr5kv-{0}-e1cv423kfq-e1cv423kfq.gz
 C:\Users\norma\Documents\GitHub\TPI_IDEC\OdooScope\OdooScopeWeb\obj\Debug\net10.0\compressed\98iwtaejc3-{0}-o622g2hv40-o622g2hv40.gz
 C:\Users\norma\Documents\GitHub\TPI_IDEC\OdooScope\OdooScopeWeb\obj\Debug\net10.0\compressed\c9rm7kvdgw-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
 C:\Users\norma\Documents\GitHub\TPI_IDEC\OdooScope\OdooScopeWeb\obj\Debug\net10.0\compressed\925v3qezsf-{0}-bqjiyaj88i-bqjiyaj88i.gz
@@ -244,3 +243,5 @@ C:\Users\norma\Documents\GitHub\TPI_IDEC\OdooScope\OdooScopeWeb\obj\Debug\net10.
 C:\Users\norma\Documents\GitHub\TPI_IDEC\OdooScope\OdooScopeWeb\obj\Debug\net10.0\OdooScopeWeb.genruntimeconfig.cache
 C:\Users\norma\Documents\GitHub\TPI_IDEC\OdooScope\OdooScopeWeb\obj\Debug\net10.0\ref\OdooScopeWeb.dll
 C:\Users\norma\Documents\GitHub\TPI_IDEC\OdooScope\OdooScopeWeb\bin\Debug\net10.0\Newtonsoft.Json.dll
+C:\Users\norma\Documents\GitHub\TPI_IDEC\OdooScope\OdooScopeWeb\obj\Debug\net10.0\OdooScopeWeb.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\norma\Documents\GitHub\TPI_IDEC\OdooScope\OdooScopeWeb\obj\Debug\net10.0\compressed\8xi76qr5kv-{0}-dgkuc2vik1-dgkuc2vik1.gz

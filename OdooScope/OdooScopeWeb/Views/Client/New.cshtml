@@ -1,40 +1,52 @@
 ﻿@using OdooScopeEntities.Entities;
 @model Client
 
-<form asp-controller="Client" asp-action="New" method="post">
-    <label>Nom</label>
-    <input asp-for="Nom" />
-    <span asp-validation-for="Nom" style="color:red;"></span>
-    <br />
+<h1>Nouveau Client</h1>
 
-    <label>Email</label>
-    <input asp-for="Email" />
-    <span asp-validation-for="Email" style="color:red;"></span>
-    <br />
+<div class="d-flex flex-column align-items-center mt-4">
+    <form asp-controller="Client" asp-action="New" method="post" style="width: 400px;">
 
-    <label>NombreEmploye</label>
-    <input asp-for="NombreEmploye" />
-    <span asp-validation-for="NombreEmploye" style="color:red;"></span>
-    <br />
+        <div class="mb-3">
+            <label class="form-label">Nom</label>
+            <input asp-for="Nom" class="form-control" />
+            <span asp-validation-for="Nom" style="color:red;"></span>
+        </div>
 
-    <label>SecteurActivite</label>
-    <select asp-for="SecteurActiviteId">
-        <option value="0">------</option>
-        @foreach (SecteurActivite sa in (List<SecteurActivite>)ViewBag.sa)
-        {
-            <option value="@sa.Id">@sa.Nom</option>
-        }
-    </select>
-    <span asp-validation-for="SecteurActiviteId" style="color:red;"></span>
-    <br />
+        <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" style="color:red;"></span>
+        </div>
 
-    <label>Notes</label>
-    <textarea name="Notes">@ViewBag.Notes</textarea>
-    <br />
-    <br />
+        <div class="mb-3">
+            <label class="form-label">Nombre d'employés</label>
+            <input asp-for="NombreEmploye" class="form-control" />
+            <span asp-validation-for="NombreEmploye" style="color:red;"></span>
+        </div>
 
-    <input type="submit" value="Sauver" class="btn btn-sm btn-dark" />
-</form>
+        <div class="mb-3">
+            <label class="form-label">Secteur d'activité</label>
+            <select asp-for="SecteurActiviteId" class="form-select">
+                <option value="0">------</option>
+                @foreach (SecteurActivite sa in (List<SecteurActivite>)ViewBag.sa)
+                {
+                    <option value="@sa.Id">@sa.Nom</option>
+                }
+            </select>
+            <span asp-validation-for="SecteurActiviteId" style="color:red;"></span>
+        </div>
+
+        <div class="mb-4">
+            <label class="form-label">Notes</label>
+            <textarea name="Notes" class="form-control" rows="3">@ViewBag.Notes</textarea>
+        </div>
+
+        <div class="d-flex justify-content-center">
+            <input type="submit" value="Sauver" class="btn btn-dark" style="width: 250px;" />
+        </div>
+
+    </form>
+</div>
 
 @section Scripts {
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
