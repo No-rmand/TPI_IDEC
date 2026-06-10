@@ -1,12 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
 using OdooScopeEntities.Entities;
 
 namespace OdooScopeWeb.Controllers
 {
-
-
     public class ClientController : Controller
     {
 
@@ -15,12 +12,8 @@ namespace OdooScopeWeb.Controllers
         {
             _context = context;
         }
-        [HttpGet]
-        public IActionResult New()
-        {
-            ViewBag.sa = _context.SecteurActivites.ToList();
-            return View();
-        }
+
+
 
         public IActionResult List()
         {
@@ -28,21 +21,25 @@ namespace OdooScopeWeb.Controllers
             return View(liste);
         }
 
+
+
+        [HttpGet]
+        public IActionResult New()
+        {
+            ViewBag.sa = _context.SecteurActivites.ToList();
+            return View();
+        }
+
         [HttpPost]
         public IActionResult New(Client c, string notes)
         {
-            // QUESTION YVES
-            // j'ai un soucis sur ce ModelState. bloque à cause de SecteurActivite
-            // Il est toujorus false si je remplis les champs car il prend secteurActiviteID
-            // J'ai obtenu la solution ModelState.Remove de Claude et ça marche comme ça mais pas propre et pas compris
-            ModelState.Remove("SecteurActivite");
-
+            ModelState.Remove("SecteurActivite"); //le secteurActivite passait le ModelState en false
             if (ModelState.IsValid)
             {
                 _context.Clients.Add(c);
                 _context.SaveChanges();
                 TempData["ok"] = "Client créé avec succès.";
-                return RedirectToAction("Form", "Question", new {newClient = c.Id, notes = notes });
+                return RedirectToAction("Form", "Question", new { newClient = c.Id, notes = notes });
             }
             else
             {
@@ -50,8 +47,10 @@ namespace OdooScopeWeb.Controllers
                 TempData["ko"] = "Veuillez corriger les erreurs.";
                 return View(c);
             }
-
         }
+        //VU//
+
+
         [HttpGet]
         public IActionResult Update(int id)
         {
@@ -63,7 +62,7 @@ namespace OdooScopeWeb.Controllers
         }
 
         [HttpPost]
-        public IActionResult UpdateDB(Client c, string notes)
+        public IActionResult Update(Client c, string notes)
         {
             ModelState.Remove("SecteurActivite");
             if (ModelState.IsValid)
@@ -87,7 +86,6 @@ namespace OdooScopeWeb.Controllers
                 TempData["ko"] = "Veuillez corriger les erreurs.";
                 return RedirectToAction("Update", c);
             }
-
         }
     }
 }

@@ -9,5 +9,11 @@ namespace OdooScopeWeb.Controllers
         {
             return View();
         }
+
+        public IActionResult Error()
+        {
+            return View();
+        }
     }
 }
+//VU//

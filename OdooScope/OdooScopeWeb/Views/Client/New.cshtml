@@ -24,7 +24,7 @@
             <span asp-validation-for="NombreEmploye" style="color:red;"></span>
         </div>
 
-        <div class="mb-3">
+        <div class="mb-5">
             <label class="form-label">Secteur d'activité</label>
             <select asp-for="SecteurActiviteId" class="form-select">
                 <option value="0">------</option>
@@ -36,7 +36,7 @@
             <span asp-validation-for="SecteurActiviteId" style="color:red;"></span>
         </div>
 
-        <div class="mb-4">
+        <div class="mb-3">
             <label class="form-label">Notes</label>
             <textarea name="Notes" class="form-control" rows="3">@ViewBag.Notes</textarea>
         </div>
@@ -52,3 +52,4 @@
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
 }
+@*//VU//*@

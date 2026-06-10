@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
-using System.ComponentModel;
 
 namespace OdooScopeEntities.Entities
 {
@@ -19,7 +15,7 @@ namespace OdooScopeEntities.Entities
         [EmailAddress(ErrorMessage = "L'e-mail n'est pas au bon format.")]
         public string Email { get; set; }
 
-        [Range(1, 999, ErrorMessage = "Le nombre d'employés doit être un chiffre positif.")]
+        [Range(1, 9999, ErrorMessage = "Le nombre d'employés doit être un chiffre positif.")]
         public int NombreEmploye { get; set; }
 
         [Range(1, int.MaxValue, ErrorMessage = "Veuillez sélectionner un secteur d'activité.")]
