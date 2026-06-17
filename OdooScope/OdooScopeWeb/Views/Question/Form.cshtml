@@ -6,8 +6,8 @@
 
 <div class="d-flex flex-column align-items-center mt-4">
     <div style="width: 700px;">
-
         <div id="reponseHidden"></div>
+        @*Ici viennent les input oui/non depuis le JS*@
 
         <table class="table table-striped">
             <thead>
@@ -17,6 +17,7 @@
                 </tr>
             </thead>
             <tbody id="questionnaireJson">
+                @*Ici rempli par le JS avec newLine pour créer le tableau*@
             </tbody>
         </table>
 
@@ -27,35 +28,36 @@
 
         <div class="d-flex justify-content-center mb-5">
             <input type="button" value="Sauver" class="btn btn-dark" style="width: 250px;" onclick="Sauver()" />
+            @*On click déclanche le JS qui va faire le POST*@
         </div>
-
     </div>
 </div>
+
 
 <script>
     var listQuestionJson = @Html.Raw(Json.Serialize(Model.Select(q => new
         {
             id = q.Id,
-                texte = q.Texte,
-                ordre = q.Ordre,
-                questionId = q.QuestionId
+            texte = q.Texte,
+            ordre = q.Ordre,
+            questionId = q.QuestionId
         })));
 
     var reponses = {};
-
+    //faire apparaitre seulement les questions parentes
     var questionParent = listQuestionJson.filter(q => q.questionId === null);
     questionParent.sort((a, b) => a.ordre - b.ordre);
     questionParent.forEach(q => {
-        newLine(q, null);
+        newLine(q, null); // null, pour faire apparaitre les questions enfants juste en dessous
     });
 
     function newLine(question, apresElement) {
+        //création des lignes du tableau
         var tbody = $("#questionnaireJson");
-
         var tr = $("<tr>").attr("id", "ligne-" + question.id);
         var tdTexte = $("<td>").html(question.texte);
         var tdReponse = $("<td>").css({ "text-align": "center", "white-space": "nowrap" });
-
+        //boutons oui/non
         var btnOui = $("<button>")
             .attr("type", "button")
             .attr("id", "oui-" + question.id)
@@ -68,9 +70,15 @@
             .text("Non")
             .addClass("btn btn-sm btn-selected");
 
+        //btn Non par défaut
+        btnNon.addClass("btn-selected");
+        reponses[question.id] = false;
+
+
+        
         btnOui.on("click", function () {
             btnOui.addClass("btn-oui-selected").removeClass("btn-selected");
-            btnNon.removeClass("btn-selected btn-oui-selected");  // ← retire tout
+            btnNon.removeClass("btn-selected btn-oui-selected");
             reponses[question.id] = true;
             questionEnfant(question.id);
         });
@@ -78,13 +86,12 @@
 
         btnNon.on("click", function () {
             btnNon.addClass("btn-selected").removeClass("btn-oui-selected");
-            btnOui.removeClass("btn-selected btn-oui-selected");  // ← retire tout
+            btnOui.removeClass("btn-selected btn-oui-selected");
             reponses[question.id] = false;
             cacherEnfants(question.id);
         });
 
-        btnNon.addClass("btn-selected");
-        reponses[question.id] = false;
+
 
         tdReponse.append(btnOui).append(btnNon);
         tr.append(tdTexte).append(tdReponse);
@@ -96,6 +103,8 @@
         }
     }
 
+
+    //afficher les questions enfants
     function questionEnfant(parentId) {
         var enfants = listQuestionJson.filter(q => q.questionId === parentId);
         enfants.sort((a, b) => a.ordre - b.ordre);
@@ -110,6 +119,7 @@
         });
     }
 
+    //masquer les questions enfants
     function cacherEnfants(parentId) {
         var enfants = listQuestionJson.filter(q => q.questionId === parentId);
 
@@ -119,6 +129,7 @@
             $("#ligne-" + enfant.id).remove();
         });
     }
+
 
     function Sauver() {
         var questionIds = [];
@@ -130,7 +141,7 @@
         }
 
         var notes = $("#Notes").val();
-        var clientId = @ViewBag.NewClient;
+        var clientId = @ViewBag.C;
 
         var jsonData = {
             "clientId": clientId,
@@ -145,11 +156,8 @@
             contentType: "application/json",
             data: JSON.stringify(jsonData),
             url: "/Question/Form",
-            success: function (data) {
+            success: function(data) {
                 window.location.replace("/Resultat/Result?clientId=" + clientId);
-            },
-            error: function () {
-                alert("Une erreur est survenue lors de la sauvegarde.");
             }
         });
     }

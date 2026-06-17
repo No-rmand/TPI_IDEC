@@ -4,13 +4,16 @@ using Microsoft.EntityFrameworkCore;
 
 namespace OdooScopeWeb.Controllers
 {
-    public class QuestionnaireData
+    public class QuestionnaireAjax
     {
         public int ClientId { get; set; }
         public string Notes { get; set; }
         public List<int> QuestionIds { get; set; }
         public List<bool> Reponses { get; set; }
     }
+    //AJAX ne communique pas directement avec _context. Du coup on crée une classe intermédiaire
+
+
 
     public class QuestionController : Controller
     {
@@ -20,23 +23,19 @@ namespace OdooScopeWeb.Controllers
             _context = context;
         }
 
-        public IActionResult List()
-        {
-            List<Question> liste = _context.Questions.ToList();
-            return View(liste);
-        }
+
 
         [HttpGet]
-        public IActionResult Form(int newClient, string notes)
+        public IActionResult Form(int c, string notes)
         {
             List<Question> questionnaire = _context.Questions.OrderBy(q => q.Ordre).ToList();
-            ViewBag.NewClient = newClient;
+            ViewBag.C = c;
             ViewBag.Notes = notes;
             return View(questionnaire);
         }
-
+        //VU//
         [HttpPost]
-        public IActionResult Form([FromBody] QuestionnaireData data)
+        public IActionResult Form([FromBody] QuestionnaireAjax data)
         {
             for (int i = 0; i < data.QuestionIds.Count; i++)
             {
@@ -110,6 +109,14 @@ namespace OdooScopeWeb.Controllers
             return Json(new { success = true });
         }
 
+        public IActionResult List()
+        {
+            List<Question> liste = _context.Questions.ToList();
+            return View(liste);
+        }
+
+
+
         [HttpGet]
         public IActionResult Update(int id)
         {
@@ -127,7 +134,7 @@ namespace OdooScopeWeb.Controllers
         }
 
         [HttpPost]
-        public IActionResult Update([FromBody] QuestionnaireData data)
+        public IActionResult Update([FromBody] QuestionnaireAjax data)
         {
             List<Repondre> anciennes = _context.Repondres
                 .Where(r => r.ClientId == data.ClientId)
