@@ -26,10 +26,10 @@ namespace OdooScopeWeb.Controllers
 
 
         [HttpGet]
-        public IActionResult Form(int c, string notes)
+        public IActionResult Form(int newClient, string notes)
         {
             List<Question> questionnaire = _context.Questions.OrderBy(q => q.Ordre).ToList();
-            ViewBag.C = c;
+            ViewBag.C = newClient;
             ViewBag.Notes = notes;
             return View(questionnaire);
         }
