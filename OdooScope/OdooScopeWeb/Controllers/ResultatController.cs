@@ -22,11 +22,6 @@ namespace OdooScopeWeb.Controllers
             return View(resultat);
         }
 
-        public IActionResult NewClient(Client c, string notes)
-        {
-            List<Client> liste = _context.Clients.Include(c => c.SecteurActivite).ToList();
-            return View(liste);
-        }
 
         [HttpPost]
         public IActionResult UpdateNotes(int resultatId, string notes)
