@@ -1,6 +1,7 @@
 ﻿@using OdooScopeEntities.Entities;
 @model List<Client>
 
+@*Liste les clients avec secteurs d'activités*@
 <h1>Liste des clients</h1>
 
 <table id="tableClients" class="table table-striped">
@@ -27,17 +28,13 @@
                     <a asp-controller="Client" asp-action="Update" asp-route-id="@c.Id" class="btn btn-sm btn-dark">Client</a>
                     <a asp-controller="Question" asp-action="Update" asp-route-id="@c.Id" class="btn btn-sm btn-dark">Question</a>
                     <a asp-controller="Resultat" asp-action="Result" asp-route-clientId="@c.Id" class="btn btn-sm btn-dark">Resultat</a>
-                    @*
-                        Liaisons à faire vers le bon chemin
-                        pour client et question = formulaire nouveau client remplis avec les infos / questionnaire avec les réponses
-                        Resultat - vue des résultats du client
-                    *@
                 </td>
             </tr>
         }
     </tbody>
 </table>
 
+@*Permet la recherche et le nombre maximum de ligne affichée*@
 <script>
     $(document).ready(function () {
         var table = $('#tableClients').DataTable({

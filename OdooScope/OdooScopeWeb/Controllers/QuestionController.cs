@@ -33,8 +33,9 @@ namespace OdooScopeWeb.Controllers
             ViewBag.Notes = notes;
             return View(questionnaire);
         }
-        //VU//
+
         [HttpPost]
+        // Récupère les réponses et les enregistre dans la DB
         public IActionResult Form([FromBody] QuestionnaireAjax data)
         {
             for (int i = 0; i < data.QuestionIds.Count; i++)
@@ -47,7 +48,7 @@ namespace OdooScopeWeb.Controllers
                 });
             }
             _context.SaveChanges();
-
+            //récupère le client concerné, lers réponses oui et les appOdoo conernées
             Client client = _context.Clients.FirstOrDefault(c => c.Id == data.ClientId);
 
             List<Repondre> reponduOui = _context.Repondres
@@ -72,7 +73,7 @@ namespace OdooScopeWeb.Controllers
                     }
                 }
             }
-
+            //on ajoute les applicaions essentielles à la liste
             List<ApplicationOdoo> appEssentielles = _context.ApplicationOdoos
                 .Where(a => a.EstEssentiel == true &&
                        (a.SecteurActiviteId == null || a.SecteurActiviteId == client.SecteurActiviteId) &&
@@ -85,7 +86,7 @@ namespace OdooScopeWeb.Controllers
             }
 
             appOdoo = appOdoo.Distinct().ToList();
-
+            //on crée un nouveau résultat
             Resultat resultat = new Resultat
             {
                 ClientId = data.ClientId,
@@ -95,7 +96,7 @@ namespace OdooScopeWeb.Controllers
 
             _context.Resultats.Add(resultat);
             _context.SaveChanges();
-
+            //on crée la liste des applications
             foreach (int appId in appOdoo)
             {
                 _context.CreationListes.Add(new CreationListe
@@ -108,6 +109,9 @@ namespace OdooScopeWeb.Controllers
 
             return Json(new { success = true });
         }
+
+
+
 
         public IActionResult List()
         {
@@ -132,7 +136,7 @@ namespace OdooScopeWeb.Controllers
 
             return View(questionnaire);
         }
-
+        // on nettoye la liste des applications et on en crée une nouvelle en fonctio des modifications apportées
         [HttpPost]
         public IActionResult Update([FromBody] QuestionnaireAjax data)
         {

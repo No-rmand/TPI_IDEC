@@ -40,7 +40,7 @@
               "RelativeDocumentMoniker": "OdooScopeWeb\\Controllers\\ClientController.cs",
               "ToolTip": "C:\\Users\\norma\\Documents\\GitHub\\TPI_IDEC\\OdooScope\\OdooScopeWeb\\Controllers\\ClientController.cs",
               "RelativeToolTip": "OdooScopeWeb\\Controllers\\ClientController.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAgwC8AAAAfAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC8AAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-17T17:41:51.502Z",
               "EditorCaption": ""
@@ -55,8 +55,7 @@
               "RelativeToolTip": "OdooScopeWeb\\Controllers\\QuestionController.cs",
               "ViewState": "AgIAACgAAAAAAAAAAADwvyIAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-11T15:29:02.298Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-11T15:29:02.298Z"
             },
             {
               "$type": "Document",
@@ -68,8 +67,7 @@
               "RelativeToolTip": "OdooScopeEntities\\Models\\Client.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-10T19:31:32.66Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-10T19:31:32.66Z"
             },
             {
               "$type": "Document",
@@ -81,8 +79,7 @@
               "RelativeToolTip": "OdooScopeWeb\\Views\\Client\\New.cshtml",
               "ViewState": "AgIAAAwAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-06-10T19:19:46.791Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-10T19:19:46.791Z"
             },
             {
               "$type": "Document",
@@ -94,8 +91,7 @@
               "RelativeToolTip": "OdooScopeWeb\\Controllers\\MainMenuController.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAA1wAYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-10T19:00:44.627Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-10T19:00:44.627Z"
             }
           ]
         }

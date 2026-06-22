@@ -30,10 +30,11 @@ namespace OdooScopeWeb.Controllers
             return View();
         }
 
+        // Enregistre le client en DB et trasfert la note à la page suivante
         [HttpPost]
         public IActionResult New(Client c, string notes)
         {
-            ModelState.Remove("SecteurActivite"); //le secteurActivite passait le ModelState en false
+            ModelState.Remove("SecteurActivite");
             if (ModelState.IsValid)
             {
                 _context.Clients.Add(c);
@@ -48,7 +49,6 @@ namespace OdooScopeWeb.Controllers
                 return View(c);
             }
         }
-        //VU//
 
 
         [HttpGet]

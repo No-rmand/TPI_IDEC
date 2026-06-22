@@ -16,4 +16,3 @@ namespace OdooScopeWeb.Controllers
         }
     }
 }
-//VU//

@@ -1,6 +1,9 @@
 ﻿@using OdooScopeEntities.Entities;
 @model Client
 
+
+@*Formulaire de création d'un nouveau client
+  Avec ViewBag pour les secteurs d'activités*@
 <h1>Nouveau Client</h1>
 
 <div class="d-flex flex-column align-items-center mt-4">
@@ -48,8 +51,9 @@
     </form>
 </div>
 
+
+@*Validation des champs*@
 @section Scripts {
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
 }
-@*//VU//*@

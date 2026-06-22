@@ -1,6 +1,8 @@
 ﻿@using OdooScopeEntities.Entities;
 @model Client
 
+@*Formulaire de modification d'un client repris du formualaire de cération
+  Envoi au controller de l'ID client de la ligne*@
 <h1>Modifier le client</h1>
 
 <div class="d-flex flex-column align-items-center mt-4">
@@ -49,6 +51,8 @@
     </form>
 </div>
 
+
+@*Validation des champs*@
 @section Scripts {
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
