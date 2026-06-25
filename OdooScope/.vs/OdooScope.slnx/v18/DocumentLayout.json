@@ -3,32 +3,40 @@
   "WorkspaceRootPath": "C:\\Users\\norma\\Documents\\GitHub\\TPI_IDEC\\OdooScope\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4A78E4D3-BAC1-EDC0-AF38-D02628611C5F}|OdooScopeWeb\\OdooScopeWeb.csproj|c:\\users\\norma\\documents\\github\\tpi_idec\\odooscope\\odooscopeweb\\views\\question\\list.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{4A78E4D3-BAC1-EDC0-AF38-D02628611C5F}|OdooScopeWeb\\OdooScopeWeb.csproj|solutionrelative:odooscopeweb\\views\\question\\list.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{4A78E4D3-BAC1-EDC0-AF38-D02628611C5F}|OdooScopeWeb\\OdooScopeWeb.csproj|c:\\users\\norma\\documents\\github\\tpi_idec\\odooscope\\odooscopeweb\\controllers\\questioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A78E4D3-BAC1-EDC0-AF38-D02628611C5F}|OdooScopeWeb\\OdooScopeWeb.csproj|solutionrelative:odooscopeweb\\controllers\\questioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4A78E4D3-BAC1-EDC0-AF38-D02628611C5F}|OdooScopeWeb\\OdooScopeWeb.csproj|c:\\users\\norma\\documents\\github\\tpi_idec\\odooscope\\odooscopeweb\\controllers\\secteuractivitecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4A78E4D3-BAC1-EDC0-AF38-D02628611C5F}|OdooScopeWeb\\OdooScopeWeb.csproj|solutionrelative:odooscopeweb\\controllers\\secteuractivitecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4A78E4D3-BAC1-EDC0-AF38-D02628611C5F}|OdooScopeWeb\\OdooScopeWeb.csproj|c:\\users\\norma\\documents\\github\\tpi_idec\\odooscope\\odooscopeweb\\controllers\\resultatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4A78E4D3-BAC1-EDC0-AF38-D02628611C5F}|OdooScopeWeb\\OdooScopeWeb.csproj|solutionrelative:odooscopeweb\\controllers\\resultatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4A78E4D3-BAC1-EDC0-AF38-D02628611C5F}|OdooScopeWeb\\OdooScopeWeb.csproj|c:\\users\\norma\\documents\\github\\tpi_idec\\odooscope\\odooscopeweb\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4A78E4D3-BAC1-EDC0-AF38-D02628611C5F}|OdooScopeWeb\\OdooScopeWeb.csproj|solutionrelative:odooscopeweb\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4A78E4D3-BAC1-EDC0-AF38-D02628611C5F}|OdooScopeWeb\\OdooScopeWeb.csproj|c:\\users\\norma\\documents\\github\\tpi_idec\\odooscope\\odooscopeweb\\views\\applicationodoo\\list.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{4A78E4D3-BAC1-EDC0-AF38-D02628611C5F}|OdooScopeWeb\\OdooScopeWeb.csproj|solutionrelative:odooscopeweb\\views\\applicationodoo\\list.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{4A78E4D3-BAC1-EDC0-AF38-D02628611C5F}|OdooScopeWeb\\OdooScopeWeb.csproj|c:\\users\\norma\\documents\\github\\tpi_idec\\odooscope\\odooscopeweb\\views\\question\\form.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4A78E4D3-BAC1-EDC0-AF38-D02628611C5F}|OdooScopeWeb\\OdooScopeWeb.csproj|solutionrelative:odooscopeweb\\views\\question\\form.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4A78E4D3-BAC1-EDC0-AF38-D02628611C5F}|OdooScopeWeb\\OdooScopeWeb.csproj|c:\\users\\norma\\documents\\github\\tpi_idec\\odooscope\\odooscopeweb\\controllers\\applicationodoocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4A78E4D3-BAC1-EDC0-AF38-D02628611C5F}|OdooScopeWeb\\OdooScopeWeb.csproj|solutionrelative:odooscopeweb\\controllers\\applicationodoocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4A78E4D3-BAC1-EDC0-AF38-D02628611C5F}|OdooScopeWeb\\OdooScopeWeb.csproj|c:\\users\\norma\\documents\\github\\tpi_idec\\odooscope\\odooscopeweb\\controllers\\questioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4A78E4D3-BAC1-EDC0-AF38-D02628611C5F}|OdooScopeWeb\\OdooScopeWeb.csproj|solutionrelative:odooscopeweb\\controllers\\questioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4A78E4D3-BAC1-EDC0-AF38-D02628611C5F}|OdooScopeWeb\\OdooScopeWeb.csproj|c:\\users\\norma\\documents\\github\\tpi_idec\\odooscope\\odooscopeweb\\views\\resultat\\result.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4A78E4D3-BAC1-EDC0-AF38-D02628611C5F}|OdooScopeWeb\\OdooScopeWeb.csproj|solutionrelative:odooscopeweb\\views\\resultat\\result.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A78E4D3-BAC1-EDC0-AF38-D02628611C5F}|OdooScopeWeb\\OdooScopeWeb.csproj|c:\\users\\norma\\documents\\github\\tpi_idec\\odooscope\\odooscopeweb\\views\\question\\update.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4A78E4D3-BAC1-EDC0-AF38-D02628611C5F}|OdooScopeWeb\\OdooScopeWeb.csproj|solutionrelative:odooscopeweb\\views\\question\\update.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A78E4D3-BAC1-EDC0-AF38-D02628611C5F}|OdooScopeWeb\\OdooScopeWeb.csproj|c:\\users\\norma\\documents\\github\\tpi_idec\\odooscope\\odooscopeweb\\views\\client\\new.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4A78E4D3-BAC1-EDC0-AF38-D02628611C5F}|OdooScopeWeb\\OdooScopeWeb.csproj|solutionrelative:odooscopeweb\\views\\client\\new.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A78E4D3-BAC1-EDC0-AF38-D02628611C5F}|OdooScopeWeb\\OdooScopeWeb.csproj|c:\\users\\norma\\documents\\github\\tpi_idec\\odooscope\\odooscopeweb\\views\\applicationodoo\\list.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4A78E4D3-BAC1-EDC0-AF38-D02628611C5F}|OdooScopeWeb\\OdooScopeWeb.csproj|solutionrelative:odooscopeweb\\views\\applicationodoo\\list.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A78E4D3-BAC1-EDC0-AF38-D02628611C5F}|OdooScopeWeb\\OdooScopeWeb.csproj|c:\\users\\norma\\documents\\github\\tpi_idec\\odooscope\\odooscopeweb\\controllers\\clientcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A78E4D3-BAC1-EDC0-AF38-D02628611C5F}|OdooScopeWeb\\OdooScopeWeb.csproj|solutionrelative:odooscopeweb\\controllers\\clientcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A78E4D3-BAC1-EDC0-AF38-D02628611C5F}|OdooScopeWeb\\OdooScopeWeb.csproj|c:\\users\\norma\\documents\\github\\tpi_idec\\odooscope\\odooscopeweb\\controllers\\resultatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A78E4D3-BAC1-EDC0-AF38-D02628611C5F}|OdooScopeWeb\\OdooScopeWeb.csproj|solutionrelative:odooscopeweb\\controllers\\resultatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,32 +46,58 @@
       "DocumentGroups": [
         {
           "DockedWidth": 187,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "List.cshtml",
-              "DocumentMoniker": "C:\\Users\\norma\\Documents\\GitHub\\TPI_IDEC\\OdooScope\\OdooScopeWeb\\Views\\Question\\List.cshtml",
-              "RelativeDocumentMoniker": "OdooScopeWeb\\Views\\Question\\List.cshtml",
-              "ToolTip": "C:\\Users\\norma\\Documents\\GitHub\\TPI_IDEC\\OdooScope\\OdooScopeWeb\\Views\\Question\\List.cshtml",
-              "RelativeToolTip": "OdooScopeWeb\\Views\\Question\\List.cshtml",
+              "DocumentIndex": 8,
+              "Title": "ResultatController.cs",
+              "DocumentMoniker": "C:\\Users\\norma\\Documents\\GitHub\\TPI_IDEC\\OdooScope\\OdooScopeWeb\\Controllers\\ResultatController.cs",
+              "RelativeDocumentMoniker": "OdooScopeWeb\\Controllers\\ResultatController.cs",
+              "ToolTip": "C:\\Users\\norma\\Documents\\GitHub\\TPI_IDEC\\OdooScope\\OdooScopeWeb\\Controllers\\ResultatController.cs",
+              "RelativeToolTip": "OdooScopeWeb\\Controllers\\ResultatController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-06-22T14:51:52.084Z",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-22T18:42:00.308Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "List.cshtml",
-              "DocumentMoniker": "C:\\Users\\norma\\Documents\\GitHub\\TPI_IDEC\\OdooScope\\OdooScopeWeb\\Views\\ApplicationOdoo\\List.cshtml",
-              "RelativeDocumentMoniker": "OdooScopeWeb\\Views\\ApplicationOdoo\\List.cshtml",
-              "ToolTip": "C:\\Users\\norma\\Documents\\GitHub\\TPI_IDEC\\OdooScope\\OdooScopeWeb\\Views\\ApplicationOdoo\\List.cshtml",
-              "RelativeToolTip": "OdooScopeWeb\\Views\\ApplicationOdoo\\List.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAALAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-06-22T14:51:12.345Z",
+              "DocumentIndex": 0,
+              "Title": "QuestionController.cs",
+              "DocumentMoniker": "C:\\Users\\norma\\Documents\\GitHub\\TPI_IDEC\\OdooScope\\OdooScopeWeb\\Controllers\\QuestionController.cs",
+              "RelativeDocumentMoniker": "OdooScopeWeb\\Controllers\\QuestionController.cs",
+              "ToolTip": "C:\\Users\\norma\\Documents\\GitHub\\TPI_IDEC\\OdooScope\\OdooScopeWeb\\Controllers\\QuestionController.cs",
+              "RelativeToolTip": "OdooScopeWeb\\Controllers\\QuestionController.cs",
+              "ViewState": "AgIAAEcAAAAAAAAAAAAAwGoAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-22T18:41:58.647Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ClientController.cs",
+              "DocumentMoniker": "C:\\Users\\norma\\Documents\\GitHub\\TPI_IDEC\\OdooScope\\OdooScopeWeb\\Controllers\\ClientController.cs",
+              "RelativeDocumentMoniker": "OdooScopeWeb\\Controllers\\ClientController.cs",
+              "ToolTip": "C:\\Users\\norma\\Documents\\GitHub\\TPI_IDEC\\OdooScope\\OdooScopeWeb\\Controllers\\ClientController.cs",
+              "RelativeToolTip": "OdooScopeWeb\\Controllers\\ClientController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-22T18:41:54.946Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ApplicationOdooController.cs",
+              "DocumentMoniker": "C:\\Users\\norma\\Documents\\GitHub\\TPI_IDEC\\OdooScope\\OdooScopeWeb\\Controllers\\ApplicationOdooController.cs",
+              "RelativeDocumentMoniker": "OdooScopeWeb\\Controllers\\ApplicationOdooController.cs",
+              "ToolTip": "C:\\Users\\norma\\Documents\\GitHub\\TPI_IDEC\\OdooScope\\OdooScopeWeb\\Controllers\\ApplicationOdooController.cs",
+              "RelativeToolTip": "OdooScopeWeb\\Controllers\\ApplicationOdooController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-22T18:42:47.921Z",
               "EditorCaption": ""
             }
           ]
@@ -74,67 +108,67 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\norma\\Documents\\GitHub\\TPI_IDEC\\OdooScope\\OdooScopeWeb\\Program.cs",
-              "RelativeDocumentMoniker": "OdooScopeWeb\\Program.cs",
-              "ToolTip": "C:\\Users\\norma\\Documents\\GitHub\\TPI_IDEC\\OdooScope\\OdooScopeWeb\\Program.cs",
-              "RelativeToolTip": "OdooScopeWeb\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-22T14:56:35.519Z",
+              "DocumentIndex": 5,
+              "Title": "New.cshtml",
+              "DocumentMoniker": "C:\\Users\\norma\\Documents\\GitHub\\TPI_IDEC\\OdooScope\\OdooScopeWeb\\Views\\Client\\New.cshtml",
+              "RelativeDocumentMoniker": "OdooScopeWeb\\Views\\Client\\New.cshtml",
+              "ToolTip": "C:\\Users\\norma\\Documents\\GitHub\\TPI_IDEC\\OdooScope\\OdooScopeWeb\\Views\\Client\\New.cshtml",
+              "RelativeToolTip": "OdooScopeWeb\\Views\\Client\\New.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-06-22T18:42:21.269Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "SecteurActiviteController.cs",
-              "DocumentMoniker": "C:\\Users\\norma\\Documents\\GitHub\\TPI_IDEC\\OdooScope\\OdooScopeWeb\\Controllers\\SecteurActiviteController.cs",
-              "RelativeDocumentMoniker": "OdooScopeWeb\\Controllers\\SecteurActiviteController.cs",
-              "ToolTip": "C:\\Users\\norma\\Documents\\GitHub\\TPI_IDEC\\OdooScope\\OdooScopeWeb\\Controllers\\SecteurActiviteController.cs",
-              "RelativeToolTip": "OdooScopeWeb\\Controllers\\SecteurActiviteController.cs",
-              "ViewState": "AgIAAAAAAAAANDMzMzPrvwsAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-22T14:54:41.737Z",
+              "Title": "Form.cshtml",
+              "DocumentMoniker": "C:\\Users\\norma\\Documents\\GitHub\\TPI_IDEC\\OdooScope\\OdooScopeWeb\\Views\\Question\\Form.cshtml",
+              "RelativeDocumentMoniker": "OdooScopeWeb\\Views\\Question\\Form.cshtml",
+              "ToolTip": "C:\\Users\\norma\\Documents\\GitHub\\TPI_IDEC\\OdooScope\\OdooScopeWeb\\Views\\Question\\Form.cshtml",
+              "RelativeToolTip": "OdooScopeWeb\\Views\\Question\\Form.cshtml",
+              "ViewState": "AgIAAFEAAAAAAAAAAAAAAAkAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-06-22T18:42:32.451Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ApplicationOdooController.cs",
-              "DocumentMoniker": "C:\\Users\\norma\\Documents\\GitHub\\TPI_IDEC\\OdooScope\\OdooScopeWeb\\Controllers\\ApplicationOdooController.cs",
-              "RelativeDocumentMoniker": "OdooScopeWeb\\Controllers\\ApplicationOdooController.cs",
-              "ToolTip": "C:\\Users\\norma\\Documents\\GitHub\\TPI_IDEC\\OdooScope\\OdooScopeWeb\\Controllers\\ApplicationOdooController.cs",
-              "RelativeToolTip": "OdooScopeWeb\\Controllers\\ApplicationOdooController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-22T14:51:29.426Z",
+              "DocumentIndex": 4,
+              "Title": "Update.cshtml",
+              "DocumentMoniker": "C:\\Users\\norma\\Documents\\GitHub\\TPI_IDEC\\OdooScope\\OdooScopeWeb\\Views\\Question\\Update.cshtml",
+              "RelativeDocumentMoniker": "OdooScopeWeb\\Views\\Question\\Update.cshtml",
+              "ToolTip": "C:\\Users\\norma\\Documents\\GitHub\\TPI_IDEC\\OdooScope\\OdooScopeWeb\\Views\\Question\\Update.cshtml",
+              "RelativeToolTip": "OdooScopeWeb\\Views\\Question\\Update.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-06-22T18:42:34.429Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ResultatController.cs",
-              "DocumentMoniker": "C:\\Users\\norma\\Documents\\GitHub\\TPI_IDEC\\OdooScope\\OdooScopeWeb\\Controllers\\ResultatController.cs",
-              "RelativeDocumentMoniker": "OdooScopeWeb\\Controllers\\ResultatController.cs",
-              "ToolTip": "C:\\Users\\norma\\Documents\\GitHub\\TPI_IDEC\\OdooScope\\OdooScopeWeb\\Controllers\\ResultatController.cs",
-              "RelativeToolTip": "OdooScopeWeb\\Controllers\\ResultatController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-22T14:50:24.482Z",
+              "DocumentIndex": 3,
+              "Title": "Result.cshtml",
+              "DocumentMoniker": "C:\\Users\\norma\\Documents\\GitHub\\TPI_IDEC\\OdooScope\\OdooScopeWeb\\Views\\Resultat\\Result.cshtml",
+              "RelativeDocumentMoniker": "OdooScopeWeb\\Views\\Resultat\\Result.cshtml",
+              "ToolTip": "C:\\Users\\norma\\Documents\\GitHub\\TPI_IDEC\\OdooScope\\OdooScopeWeb\\Views\\Resultat\\Result.cshtml",
+              "RelativeToolTip": "OdooScopeWeb\\Views\\Resultat\\Result.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-06-22T18:42:36.457Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "QuestionController.cs",
-              "DocumentMoniker": "C:\\Users\\norma\\Documents\\GitHub\\TPI_IDEC\\OdooScope\\OdooScopeWeb\\Controllers\\QuestionController.cs",
-              "RelativeDocumentMoniker": "OdooScopeWeb\\Controllers\\QuestionController.cs",
-              "ToolTip": "C:\\Users\\norma\\Documents\\GitHub\\TPI_IDEC\\OdooScope\\OdooScopeWeb\\Controllers\\QuestionController.cs",
-              "RelativeToolTip": "OdooScopeWeb\\Controllers\\QuestionController.cs",
-              "ViewState": "AgIAAFMAAAAAPDMzMzMKwGIAAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-22T14:16:32.251Z",
+              "Title": "List.cshtml",
+              "DocumentMoniker": "C:\\Users\\norma\\Documents\\GitHub\\TPI_IDEC\\OdooScope\\OdooScopeWeb\\Views\\ApplicationOdoo\\List.cshtml",
+              "RelativeDocumentMoniker": "OdooScopeWeb\\Views\\ApplicationOdoo\\List.cshtml",
+              "ToolTip": "C:\\Users\\norma\\Documents\\GitHub\\TPI_IDEC\\OdooScope\\OdooScopeWeb\\Views\\ApplicationOdoo\\List.cshtml",
+              "RelativeToolTip": "OdooScopeWeb\\Views\\ApplicationOdoo\\List.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-06-22T18:42:45.357Z",
               "EditorCaption": ""
             }
           ]
