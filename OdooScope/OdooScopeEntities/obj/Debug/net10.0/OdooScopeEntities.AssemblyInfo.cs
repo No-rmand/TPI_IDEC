@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OdooScopeEntities")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0418bb3704a3702ca8063c8c2e5fede70b517c03")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+eacaa0a743081f526c1646c2fa6468c40b081a66")]
 [assembly: System.Reflection.AssemblyProductAttribute("OdooScopeEntities")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OdooScopeEntities")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
